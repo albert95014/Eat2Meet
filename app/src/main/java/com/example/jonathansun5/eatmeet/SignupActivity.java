@@ -1,6 +1,8 @@
 package com.example.jonathansun5.eatmeet;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,6 +34,16 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signup();
+                String name = _nameText.getText().toString();
+                String email = _emailText.getText().toString();
+                String password = _passwordText.getText().toString();
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, UserNameActivity.class);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                mContext.startActivity(intent);
+
             }
         });
 

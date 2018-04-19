@@ -22,7 +22,8 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".UserNameActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".PersonalActivity"></activity>
+        <activity android:name=".PersonalActivity" />
+        <activity android:name=".AllergyActivity"></activity>
     </application>
 
 </manifest>

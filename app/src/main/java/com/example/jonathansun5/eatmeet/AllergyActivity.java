@@ -4,18 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 
 import java.util.ArrayList;
 
-public class PersonalActivity extends AppCompatActivity {
+public class AllergyActivity extends AppCompatActivity {
 
-    private EditText birthYearText;
-    private EditText partySizeText;
-    private Button personalContinue;
+    private Button allergyContinue;
 
     private String name;
     private String email;
@@ -24,33 +22,34 @@ public class PersonalActivity extends AppCompatActivity {
     private String lifestyle;
     private String birthYear;
     private String partySize;
-
+    private ArrayList<String> allergies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal);
+        setContentView(R.layout.activity_allergy);
 
-        //Link up the UI elements
-        birthYearText = (EditText) findViewById(R.id.birthYear);
-        partySizeText = (EditText) findViewById(R.id.partySize);
-        personalContinue = (Button) findViewById(R.id.personalContinue);
+        //Link up UI elements
+        allergyContinue = (Button) findViewById(R.id.allergyContinue);
 
-        //Get intent information
+        //Get Extras
         Intent receivingIntent = getIntent();
         Bundle extras = receivingIntent.getExtras();
         name = (String) extras.get("name");
         email = (String) extras.get("email");
         password = (String) extras.get("password");
         username = (String) extras.get("username");
+        lifestyle = (String) extras.get("lifestyle");
+        birthYear = (String) extras.get("birthyear");
+        partySize = (String) extras.get("partysize");
 
-        personalContinue.setOnClickListener(new View.OnClickListener() {
+        allergies = new ArrayList<>();
+
+        allergyContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                birthYear = birthYearText.getText().toString();
-                partySize = partySizeText.getText().toString();
                 Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, AllergyActivity.class);
+                Intent intent = new Intent(mContext, ProfileActivity.class);
                 intent.putExtra("username", username);
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
@@ -58,6 +57,7 @@ public class PersonalActivity extends AppCompatActivity {
                 intent.putExtra("birthyear", birthYear);
                 intent.putExtra("partysize", partySize);
                 intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("allergies", allergies);
                 mContext.startActivity(intent);
 
             }
@@ -68,34 +68,38 @@ public class PersonalActivity extends AppCompatActivity {
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
+        Log.d("Checked", "Added to Allergies");
 
         // Check which radio button was clicked
         switch(view.getId()) {
-            case R.id.radioVegetarian:
+            case R.id.radioEggs:
                 if (checked)
-                    // Vegetarian chosen
-                    lifestyle = "Vegetarian";
-                    break;
-            case R.id.radioVegan:
+                    allergies.add("eggs");
+                break;
+            case R.id.radioDairy:
                 if (checked)
-                    // Vegan chose
-                    lifestyle = "Vegan";
-                    break;
-            case R.id.radioGlutenFree:
+                    allergies.add("dairy");
+                break;
+            case R.id.radioPineNuts:
                 if (checked)
-                    // Gluten Free chosen
-                    lifestyle = "Gluten Free";
-                    break;
-            case R.id.radioOmnivore:
+                    allergies.add("pine nuts");
+                break;
+            case R.id.radioPeanuts:
                 if (checked)
-                    // Omnivore chosen
-                    lifestyle = "Omnivore";
-                    break;
-            case R.id.radioPescatarian:
+                    allergies.add("peanuts");
+                break;
+            case R.id.radioSesame:
                 if (checked)
-                    // Pescatarian chosen
-                    lifestyle = "Pescatarian";
-                    break;
+                    allergies.add("sesame");
+                break;
+            case R.id.radioFish:
+                if (checked)
+                    allergies.add("fish");
+                break;
+            case R.id.radioGluten:
+                if (checked)
+                    allergies.add("gluten");
+                break;
         }
     }
 }

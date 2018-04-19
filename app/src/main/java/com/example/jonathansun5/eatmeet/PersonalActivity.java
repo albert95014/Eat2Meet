@@ -36,6 +36,14 @@ public class PersonalActivity extends AppCompatActivity {
         partySizeText = (EditText) findViewById(R.id.partySize);
         personalContinue = (Button) findViewById(R.id.personalContinue);
 
+        //Get intent information
+        Intent receivingIntent = getIntent();
+        Bundle extras = receivingIntent.getExtras();
+        name = (String) extras.get("name");
+        email = (String) extras.get("email");
+        password = (String) extras.get("password");
+        username = (String) extras.get("username");
+
         personalContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +55,10 @@ public class PersonalActivity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
                 intent.putExtra("password", password);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("lifestyle", lifestyle);
+                mContext.startActivity(intent);
 
             }
         });

@@ -43,6 +43,7 @@ public class UserNameActivity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
                 intent.putExtra("password", password);
+                mContext.startActivity(intent);
 
             }
         });

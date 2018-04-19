@@ -38,6 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/birthYear" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="91dp"
@@ -87,8 +88,13 @@
         android:id="@+id/personalContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginTop="8dp"
         android:text="Continue"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="484dp" />
+        android:background="#0491fb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 </android.support.constraint.ConstraintLayout>

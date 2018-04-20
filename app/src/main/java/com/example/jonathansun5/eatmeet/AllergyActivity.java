@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 
 import java.util.ArrayList;
@@ -67,38 +68,46 @@ public class AllergyActivity extends AppCompatActivity {
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
+        boolean checked = ((CheckBox) view).isChecked();
         Log.d("Checked", "Added to Allergies");
 
         // Check which radio button was clicked
         switch(view.getId()) {
-            case R.id.radioEggs:
+            case R.id.checkboxEggs:
                 if (checked)
                     allergies.add("eggs");
                 break;
-            case R.id.radioDairy:
+            case R.id.checkboxDairy:
                 if (checked)
                     allergies.add("dairy");
                 break;
-            case R.id.radioPineNuts:
+            case R.id.checkboxPineNuts:
                 if (checked)
                     allergies.add("pine nuts");
                 break;
-            case R.id.radioPeanuts:
+            case R.id.checkboxPeanuts:
                 if (checked)
                     allergies.add("peanuts");
                 break;
-            case R.id.radioSesame:
+            case R.id.checkboxSesame:
                 if (checked)
                     allergies.add("sesame");
                 break;
-            case R.id.radioFish:
+            case R.id.checkboxFish:
                 if (checked)
                     allergies.add("fish");
                 break;
-            case R.id.radioGluten:
+            case R.id.checkboxGluten:
                 if (checked)
                     allergies.add("gluten");
+                break;
+            case R.id.checkboxNone:
+                if (checked)
+                    allergies.add("none");
+                break;
+            case R.id.checkboxOthers:
+                if (checked)
+                    allergies.add("others");
                 break;
         }
     }

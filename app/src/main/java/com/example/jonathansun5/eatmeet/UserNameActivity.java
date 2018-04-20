@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import butterknife.ButterKnife;
+import butterknife.BindView;
+
 public class UserNameActivity extends AppCompatActivity {
 
-    private EditText usernameText;
-    private Button usernameCont;
+    @BindView(R.id.usernameInput) EditText _usernameText;
+    @BindView(R.id.usernameContinue) Button _usernameContinueButton;
+
     private String name;
     private String email;
     private String password;
@@ -20,10 +24,7 @@ public class UserNameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_name);
-
-        //Get UI elements
-        usernameText = (EditText) findViewById(R.id.usernameInput);
-        usernameCont = (Button) findViewById(R.id.usernameContinue);
+        ButterKnife.bind(this);
 
         //Get Intent information from sign-up
         Intent recevingIntent = getIntent();
@@ -32,19 +33,22 @@ public class UserNameActivity extends AppCompatActivity {
         email = (String) extras.get("email");
         password = (String) extras.get("password");
 
-
-        usernameCont.setOnClickListener(new View.OnClickListener() {
+        _usernameContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = usernameText.getText().toString();
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, PersonalActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                mContext.startActivity(intent);
-
+                String username = _usernameText.getText().toString();
+                if (username.isEmpty() || username.length() < 3) {
+                    _usernameText.setError("at least 3 characters");
+                } else {
+                    _usernameText.setError(null);
+                    Context mContext = getBaseContext();
+                    Intent intent = new Intent(mContext, PersonalActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("name", name);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
+                    mContext.startActivity(intent);
+                }
             }
         });
     }

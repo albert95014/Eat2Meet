@@ -1,99 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.jonathansun5.eatmeet.AllergyActivity">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="163dp"
-        android:layout_marginStart="163dp"
-        android:layout_marginTop="75dp"
-        android:text="Allergies"
-        android:textSize="50dp"
-        android:textColor="#0491fb"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="187dp"
-        android:layout_marginTop="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-        <RadioButton
-            android:id="@+id/radioEggs"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/checkboxEggs"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="eggs" />
 
-        <RadioButton
-            android:id="@+id/radioDairy"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/checkboxDairy"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="dairy" />
 
-        <RadioButton
-            android:id="@+id/radioPineNuts"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/checkboxPineNuts"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="pine nuts" />
 
-        <RadioButton
-            android:id="@+id/radioPeanuts"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/checkboxPeanuts"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="peanuts" />
 
-        <RadioButton
-            android:id="@+id/radioSesame"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/checkboxSesame"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="sesame" />
 
-        <RadioButton
-            android:id="@+id/radioFish"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/checkboxFish"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="fish" />
 
-        <RadioButton
-            android:id="@+id/radioGluten"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/checkboxGluten"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="gluten" />
-    </RadioGroup>
 
-    <Button
-        android:id="@+id/allergyContinue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="86dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="53dp"
-        android:background="#0491fb"
-        android:text="Continue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-</android.support.constraint.ConstraintLayout>
+        <CheckBox
+            android:id="@+id/checkboxNone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="none" />
+
+        <CheckBox
+            android:id="@+id/checkboxOthers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="others" />
+
+
+        <!-- Continue Button -->
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/allergyContinue"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Continue"/>
+
+    </LinearLayout>
+</ScrollView>

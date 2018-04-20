@@ -1,100 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.jonathansun5.eatmeet.PersonalActivity">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
 
-    <EditText
-        android:id="@+id/birthYear"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="471dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="Enter Birth Year"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-    <EditText
-        android:id="@+id/partySize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="326dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="99dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Max Dining Party Size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthYear" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="91dp"
-        android:layout_marginTop="75dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/partySize">
-
-        <RadioButton
-            android:id="@+id/radioVegan"
-            android:layout_width="wrap_content"
+        <!--  Birth Year Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="Vegan" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText
+                android:id="@+id/birthYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="4"
+                android:hint="@string/enter_birth_year" />
+        </android.support.design.widget.TextInputLayout>
 
-        <RadioButton
-            android:id="@+id/radioVegetarian"
-            android:layout_width="wrap_content"
+        <!-- Party Size Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="Vegetarian" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText
+                android:id="@+id/partySize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="4"
+                android:hint="@string/max_party_size" />
+        </android.support.design.widget.TextInputLayout>
 
-        <RadioButton
-            android:id="@+id/radioGlutenFree"
-            android:layout_width="wrap_content"
+        <!-- Radio Food Personality Label -->
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="Gluten Free" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:checkedButton="@+id/radioNormal">
 
-        <RadioButton
-            android:id="@+id/radioOmnivore"
-            android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/radioVegan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Vegan" />
+
+            <RadioButton
+                android:id="@+id/radioVegetarian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Vegetarian" />
+
+            <RadioButton
+                android:id="@+id/radioGlutenFree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Gluten Free" />
+
+            <RadioButton
+                android:id="@+id/radioOmnivore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Omnivore" />
+
+            <RadioButton
+                android:id="@+id/radioPescatarian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Pescatarian" />
+
+            <RadioButton
+                android:id="@+id/radioNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Normal" />
+
+        </RadioGroup>
+
+        <!-- Continue Button -->
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/personalContinue"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="Omnivore" />
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Continue"/>
 
-        <RadioButton
-            android:id="@+id/radioPescatarian"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="Pescatarian" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/personalContinue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginTop="8dp"
-        android:text="Continue"
-        android:background="#0491fb"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-</android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

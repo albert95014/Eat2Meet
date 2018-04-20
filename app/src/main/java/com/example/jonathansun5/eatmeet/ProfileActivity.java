@@ -103,14 +103,14 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Start the Firebase and next activity
                 DatabaseReference users = database.getReference("users");
-                users.child("email").setValue(email);
-                users.child("username").setValue(username);
-                users.child("name").setValue(name);
-                users.child("password").setValue(password);
-                users.child("birthYear").setValue(birthYear);
-                users.child("lifestyle").setValue(lifestyle);
-                users.child("partySize").setValue(partySize);
-                users.child("allergies").setValue(allergies);
+                DatabaseReference userEmail = users.child(email.replace(".", ","));
+                userEmail.child("username").setValue(username);
+                userEmail.child("name").setValue(name);
+                userEmail.child("password").setValue(password);
+                userEmail.child("birthYear").setValue(birthYear);
+                userEmail.child("lifestyle").setValue(lifestyle);
+                userEmail.child("partySize").setValue(partySize);
+                userEmail.child("allergies").setValue(allergies);
             }
         });
 

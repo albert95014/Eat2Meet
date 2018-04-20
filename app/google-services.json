@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "952435965315",
+    "firebase_url": "https://eatmeet-6f4bc.firebaseio.com",
+    "project_id": "eatmeet-6f4bc",
+    "storage_bucket": "eatmeet-6f4bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952435965315:android:2e2edfa5532b1686",
+        "android_client_info": {
+          "package_name": "com.example.jonathansun5.eatmeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952435965315-82ngp4comuf42ifqa4f777raa9g749aj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jonathansun5.eatmeet",
+            "certificate_hash": "b7cda1208638f8c90af490f7010e9f5cfc534e38"
+          }
+        },
+        {
+          "client_id": "952435965315-bu22tfii6pc41utmiod2cs1rg2cdp5mk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAOpfD1J06Yul4HBtaPNwHAnNLXYJBxRg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952435965315-bu22tfii6pc41utmiod2cs1rg2cdp5mk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

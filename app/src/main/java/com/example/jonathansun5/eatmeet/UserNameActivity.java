@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
@@ -19,6 +21,11 @@ public class UserNameActivity extends AppCompatActivity {
     private String name;
     private String email;
     private String password;
+    private String username;
+    private String lifestyle;
+    private String birthYear;
+    private String partySize;
+    private ArrayList<String> allergies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,15 @@ public class UserNameActivity extends AppCompatActivity {
         name = (String) extras.get("name");
         email = (String) extras.get("email");
         password = (String) extras.get("password");
+        username = (String) extras.get("username");
+        lifestyle = (String) extras.get("lifestyle");
+        birthYear = (String) extras.get("birthyear");
+        partySize = (String) extras.get("partysize");
+        allergies = (ArrayList<String>) extras.get("allergies");
+
+        if (username != null) {
+            _usernameText.setText(username);
+        }
 
         _usernameContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +63,10 @@ public class UserNameActivity extends AppCompatActivity {
                     intent.putExtra("name", name);
                     intent.putExtra("email", email);
                     intent.putExtra("password", password);
+                    intent.putExtra("lifestyle", lifestyle);
+                    intent.putExtra("birthyear", birthYear);
+                    intent.putExtra("partysize", partySize);
+                    intent.putExtra("allergies", allergies);
                     mContext.startActivity(intent);
                 }
             }

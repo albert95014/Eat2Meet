@@ -20,6 +20,15 @@ import butterknife.BindView;
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
 
+    private String name;
+    private String email;
+    private String password;
+    private String username;
+    private String lifestyle;
+    private String birthYear;
+    private String partySize;
+    private ArrayList<String> allergies;
+
     @BindView(R.id.input_name) EditText _nameText;
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
@@ -36,14 +45,22 @@ public class SignupActivity extends AppCompatActivity {
 
         Intent receivingIntent = getIntent();
         Bundle extras = receivingIntent.getExtras();
-        name = (String) extras.get("name");
-        email = (String) extras.get("email");
-        password = (String) extras.get("password");
-        username = (String) extras.get("username");
-        lifestyle = (String) extras.get("lifestyle");
-        birthYear = (String) extras.get("birthyear");
-        partySize = (String) extras.get("partysize");
-        allergies = (ArrayList<String>) extras.get("allergies");
+
+        if (extras != null) {
+            name = (String) extras.get("name");
+            email = (String) extras.get("email");
+            password = (String) extras.get("password");
+            username = (String) extras.get("username");
+            lifestyle = (String) extras.get("lifestyle");
+            birthYear = (String) extras.get("birthyear");
+            partySize = (String) extras.get("partysize");
+            allergies = (ArrayList<String>) extras.get("allergies");
+
+            _nameText.setText(name);
+            _emailText.setText(email);
+            _passwordText.setText(password);
+        }
+
 
 
 
@@ -61,8 +78,12 @@ public class SignupActivity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
                 intent.putExtra("password", password);
+                intent.putExtra("username", username);
+                intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("allergies", allergies);
                 mContext.startActivity(intent);
-
             }
         });
 

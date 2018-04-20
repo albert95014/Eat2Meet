@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class ProfileActivity extends AppCompatActivity {
 
     private TextView nameText;
@@ -41,6 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.editLifestyleButton) Button _editLifestyleButton;
     @BindView(R.id.editPartySizeButton) Button _editPartySizeButton;
     @BindView(R.id.editAllergiesButton) Button _editAllergiesButton;
+
+    public FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +102,15 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Firebase and next activity
-
+                DatabaseReference users = database.getReference("users");
+                users.child("email").setValue(email);
+                users.child("username").setValue(username);
+                users.child("name").setValue(name);
+                users.child("password").setValue(password);
+                users.child("birthYear").setValue(birthYear);
+                users.child("lifestyle").setValue(lifestyle);
+                users.child("partySize").setValue(partySize);
+                users.child("allergies").setValue(allergies);
             }
         });
 

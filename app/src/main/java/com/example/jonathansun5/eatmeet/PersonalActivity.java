@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.BindView;
@@ -26,6 +29,8 @@ public class PersonalActivity extends AppCompatActivity {
     private String lifestyle;
     private String birthYear;
     private String partySize;
+    private ArrayList<String> allergies;
+    private RadioGroup radiogroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,45 @@ public class PersonalActivity extends AppCompatActivity {
         email = (String) extras.get("email");
         password = (String) extras.get("password");
         username = (String) extras.get("username");
+        lifestyle = (String) extras.get("lifestyle");
+        birthYear = (String) extras.get("birthyear");
+        partySize = (String) extras.get("partysize");
+        allergies = (ArrayList<String>) extras.get("allergies");
+
+        if (birthYear != null) {
+            _birthYearText.setText(birthYear);
+        }
+        if (partySize != null) {
+            _partySizeText.setText(partySize);
+        }
+        if (lifestyle != null) {
+            switch (lifestyle) {
+                case "Vegetarian":
+                    RadioButton vegetarian = (RadioButton) findViewById(R.id.radioVegetarian);
+                    vegetarian.setChecked(true);
+                    break;
+                case "Vegan":
+                    RadioButton vegan = (RadioButton) findViewById(R.id.radioVegan);
+                    vegan.setChecked(true);
+                    break;
+                case "Gluten Free":
+                    RadioButton glutenFree = (RadioButton) findViewById(R.id.radioGlutenFree);
+                    glutenFree.setChecked(true);
+                    break;
+                case "Omnivore":
+                    RadioButton omnivore = (RadioButton) findViewById(R.id.radioOmnivore);
+                    omnivore.setChecked(true);
+                    break;
+                case "Pescatarian":
+                    RadioButton pescatarian = (RadioButton) findViewById(R.id.radioPescatarian);
+                    pescatarian.setChecked(true);
+                    break;
+                case "Normal":
+                    RadioButton normal = (RadioButton) findViewById(R.id.radioNormal);
+                    normal.setChecked(true);
+                    break;
+            }
+        }
 
         _personalContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +118,7 @@ public class PersonalActivity extends AppCompatActivity {
                     intent.putExtra("birthyear", birthYear);
                     intent.putExtra("partysize", partySize);
                     intent.putExtra("lifestyle", lifestyle);
+                    intent.putExtra("allergies", allergies);
                     mContext.startActivity(intent);
                 } else {
                     Toast.makeText(getBaseContext(), "Please Fix Inputs", Toast.LENGTH_LONG).show();

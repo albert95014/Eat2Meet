@@ -1,200 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jonathansun5.eatmeet.ProfileActivity">
+    android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:gravity="center"
-            android:text="Profile"
-            android:textColor="#0491fb"
-            android:textSize="80dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/profile_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="#ebca0707"
+            android:elevation="4dp"
+            android:paddingBottom="24dp">
+
+            <Button
+                android:id="@+id/saveProfile"
+                android:background="@drawable/ic_save_black_24dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp" />
 
             <TextView
-                android:id="@+id/nametext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_weight="1"
-                android:text="Name:" />
-
-            <EditText
-                android:id="@+id/nameEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/emailText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_weight="1"
-                android:text="Email:" />
-
-            <EditText
-                android:id="@+id/emailEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="Email" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/passwordText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000000"
-                android:text="Password:" />
-
-            <EditText
-                android:id="@+id/passwordEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="Password" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/usernameText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000000"
-                android:text="Username:" />
-
-            <EditText
                 android:id="@+id/usernameEditText"
+                android:hint="Username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="Username" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="76dp"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/lifestyleText"
+                android:id="@+id/nameEditText"
+                android:hint="Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000000"
-                android:text="Lifestyle:" />
+                android:layout_below="@+id/usernameEditText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
-            <EditText
-                android:id="@+id/lifestyleEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="Lifestyle" />
-        </LinearLayout>
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_below="@+id/profile_layout"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/birthyearText"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000000"
-                android:text="Birth Year:" />
+                android:orientation="horizontal"
+                android:background="#fff"
+                android:layout_margin="5dp">
 
-            <EditText
-                android:id="@+id/birthyearEditText"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/emailEditText"
+                    android:hint="Email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:elevation="4dp"
+                    android:padding="20dp" />
+
+                <Button
+                    android:id="@+id/editEmailButton"
+                    android:background="@drawable/ic_create_black_24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="Birth Year" />
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:background="#fff">
+
+                <TextView
+                    android:id="@+id/passwordEditText"
+                    android:hint="Password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:elevation="4dp"
+                    android:padding="20dp" />
+
+                <Button
+                    android:id="@+id/editPasswordButton"
+                    android:background="@drawable/ic_create_black_24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:background="#fff">
+
+                <TextView
+                    android:id="@+id/birthyearEditText"
+                    android:hint="Birth Year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:elevation="4dp"
+                    android:padding="20dp" />
+
+                <Button
+                    android:id="@+id/editBirthYearButton"
+                    android:background="@drawable/ic_create_black_24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:background="#fff">
+
+                <TextView
+                    android:id="@+id/lifestyleEditText"
+                    android:hint="Lifestyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:elevation="4dp"
+                    android:padding="20dp" />
+
+                <Button
+                    android:id="@+id/editLifestyleButton"
+                    android:background="@drawable/ic_create_black_24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:background="#fff">
+
+                <TextView
+                    android:id="@+id/partysizeEditText"
+                    android:hint="Max Party Size"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:elevation="4dp"
+                    android:padding="20dp" />
+
+                <Button
+                    android:id="@+id/editPartySizeButton"
+                    android:background="@drawable/ic_create_black_24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:background="#fff">
+
+                <TextView
+                    android:id="@+id/allergiesEditText"
+                    android:hint="Allergies"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:elevation="4dp"
+                    android:padding="20dp" />
+
+                <Button
+                    android:id="@+id/editAllergiesButton"
+                    android:background="@drawable/ic_create_black_24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" />
+
+            </LinearLayout>
+
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/partysizeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000000"
-                android:text="Max Party Size:" />
-
-            <EditText
-                android:id="@+id/partysizeEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="Size" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/allergiesText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000000"
-                android:text="Allergies:" />
-
-            <EditText
-                android:id="@+id/allergiesEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Allergies" />
-        </LinearLayout>
-
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
+</ScrollView>

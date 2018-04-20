@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
@@ -29,6 +31,23 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
+
+
+
+        Intent receivingIntent = getIntent();
+        Bundle extras = receivingIntent.getExtras();
+        name = (String) extras.get("name");
+        email = (String) extras.get("email");
+        password = (String) extras.get("password");
+        username = (String) extras.get("username");
+        lifestyle = (String) extras.get("lifestyle");
+        birthYear = (String) extras.get("birthyear");
+        partySize = (String) extras.get("partysize");
+        allergies = (ArrayList<String>) extras.get("allergies");
+
+
+
+
 
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override

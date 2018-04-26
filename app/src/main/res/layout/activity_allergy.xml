@@ -1,91 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="56dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_height="match_parent"
+        android:background="@color/graylight"
+        android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/checkboxEggs"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:titleTextColor="@color/startblue"
+            app:title="temp title"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="eggs" />
+            android:paddingTop="56dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
 
-        <CheckBox
-            android:id="@+id/checkboxDairy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="dairy" />
+            <CheckBox
+                android:id="@+id/checkboxEggs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="eggs" />
 
-        <CheckBox
-            android:id="@+id/checkboxPineNuts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="pine nuts" />
+            <CheckBox
+                android:id="@+id/checkboxDairy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="dairy" />
 
-        <CheckBox
-            android:id="@+id/checkboxPeanuts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="peanuts" />
+            <CheckBox
+                android:id="@+id/checkboxPineNuts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="pine nuts" />
 
-        <CheckBox
-            android:id="@+id/checkboxSesame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="sesame" />
+            <CheckBox
+                android:id="@+id/checkboxPeanuts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="peanuts" />
 
-        <CheckBox
-            android:id="@+id/checkboxFish"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="fish" />
+            <CheckBox
+                android:id="@+id/checkboxSesame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="sesame" />
 
-        <CheckBox
-            android:id="@+id/checkboxGluten"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="gluten" />
+            <CheckBox
+                android:id="@+id/checkboxFish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="fish" />
 
-        <CheckBox
-            android:id="@+id/checkboxNone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="none" />
+            <CheckBox
+                android:id="@+id/checkboxGluten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="gluten" />
 
-        <CheckBox
-            android:id="@+id/checkboxOthers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="others" />
+            <!--<CheckBox-->
+                <!--android:id="@+id/checkboxNone"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:onClick="onRadioButtonClicked"-->
+                <!--android:text="none" />-->
+
+            <CheckBox
+                android:id="@+id/checkboxOthers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="others" />
 
 
-        <!-- Continue Button -->
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/allergyContinue"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:text="Continue"/>
+            <!-- Continue Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/allergyContinue"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="12dp"
+                android:text="Continue" />
 
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

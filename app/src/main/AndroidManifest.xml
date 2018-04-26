@@ -21,9 +21,12 @@
         </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".UserNameActivity" />
-        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme" />
         <activity android:name=".PersonalActivity" />
-        <activity android:name=".AllergyActivity"></activity>
+        <activity android:name=".AllergyActivity" />
     </application>
 
 </manifest>

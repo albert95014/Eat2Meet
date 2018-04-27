@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "952435965315-tu760m2kn2utfmgmqm68mc7ok7tu6dqj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jonathansun5.eatmeet",
+            "certificate_hash": "b1cb197e3f5383924f4c0998efa71530f02e91ca"
+          }
+        },
+        {
           "client_id": "952435965315-82ngp4comuf42ifqa4f777raa9g749aj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

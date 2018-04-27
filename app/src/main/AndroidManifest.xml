@@ -23,7 +23,8 @@
         <activity android:name=".UserNameActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".PersonalActivity" />
-        <activity android:name=".AllergyActivity"></activity>
+        <activity android:name=".AllergyActivity" />
+        <activity android:name=".CircleActivity"></activity>
     </application>
 
 </manifest>

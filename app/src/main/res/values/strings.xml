@@ -18,4 +18,5 @@
     <string name="not_a_member_text">Not a member?</string>
     <string name="enter_birth_year">Birth Year</string>
     <string name="max_party_size">Max Dining Party Size</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 </resources>

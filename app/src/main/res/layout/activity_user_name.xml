@@ -37,11 +37,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp">
+
                 <EditText
                     android:id="@+id/usernameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Create a Username" />
+                    android:hint="Create a Username"
+                    android:singleLine="false" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Continue Button -->

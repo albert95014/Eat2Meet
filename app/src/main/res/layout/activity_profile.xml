@@ -262,37 +262,45 @@
                     android:paddingLeft="20dp"
                     android:text="Add Friend"/>
             </LinearLayout>
+            <Button
+                android:id="@+id/toMap"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Meeting!" />
             <!--<LinearLayout-->
-                <!--android:layout_marginTop="25dp"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:paddingLeft="25dp"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
-                <!--<ImageView-->
-                    <!--android:layout_width="36dp"-->
-                    <!--android:layout_height="36dp"-->
-                    <!--android:src="@drawable/ic_forum_black_24dp"/>-->
-                <!--<TextView-->
-                    <!--android:textStyle="bold"-->
+            <!--android:layout_marginTop="25dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingLeft="25dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<ImageView-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="36dp"-->
+            <!--android:src="@drawable/ic_forum_black_24dp"/>-->
+            <!--<TextView-->
+            <!--android:textStyle="bold"-->
 
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:paddingLeft="20dp"-->
-                    <!--android:text="Show all comments"/>-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingLeft="20dp"-->
+            <!--android:text="Show all comments"/>-->
             <!--</LinearLayout>-->
         </LinearLayout>
 
         <!--<Button-->
-            <!--android:textColor="#fff"-->
-            <!--android:background="@drawable/buttonstyleithgradient"-->
-            <!--android:layout_marginTop="35dp"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Follow Me"/>-->
+        <!--android:textColor="#fff"-->
+        <!--android:background="@drawable/buttonstyleithgradient"-->
+        <!--android:layout_marginTop="35dp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Follow Me"/>-->
 
     </LinearLayout>
+
+
 </ScrollView>
 
 
@@ -302,220 +310,220 @@
 
 
 
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->
     <!--android:fitsSystemWindows="true">-->
 
     <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
 
-        <!--<RelativeLayout-->
-            <!--android:id="@+id/profile_layout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="#0491fb"-->
-            <!--android:elevation="4dp"-->
-            <!--android:paddingBottom="24dp">-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/profile_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="#0491fb"-->
+    <!--android:elevation="4dp"-->
+    <!--android:paddingBottom="24dp">-->
 
-            <!--<Button-->
-                <!--android:id="@+id/saveProfile"-->
-                <!--android:background="@drawable/ic_save_black_24dp"-->
-                <!--android:layout_width="48dp"-->
-                <!--android:layout_height="48dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:layout_marginTop="16dp" />-->
+    <!--<Button-->
+    <!--android:id="@+id/saveProfile"-->
+    <!--android:background="@drawable/ic_save_black_24dp"-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_marginTop="16dp" />-->
 
-            <!--<TextView-->
-                <!--android:id="@+id/usernameEditText"-->
-                <!--android:hint="Username"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_marginTop="76dp"-->
-                <!--android:textColor="#fff"-->
-                <!--android:textSize="24sp"-->
-                <!--android:textStyle="bold" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/usernameEditText"-->
+    <!--android:hint="Username"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="76dp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:textSize="24sp"-->
+    <!--android:textStyle="bold" />-->
 
-            <!--<TextView-->
-                <!--android:id="@+id/nameEditText"-->
-                <!--android:hint="Name"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@+id/usernameEditText"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_marginTop="12dp"-->
-                <!--android:textColor="#fff"-->
-                <!--android:textSize="14sp" />-->
-        <!--</RelativeLayout>-->
-
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/profile_layout"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:orientation="vertical">-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:background="#fff"-->
-                <!--android:layout_margin="5dp">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/emailEditText"-->
-                    <!--android:hint="Email"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="left|center_vertical"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:elevation="4dp"-->
-                    <!--android:padding="20dp" />-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/editEmailButton"-->
-                    <!--android:background="@drawable/ic_create_black_24dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_width="48dp"-->
-                    <!--android:layout_height="48dp" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="#fff">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/passwordEditText"-->
-                    <!--android:hint="Password"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="left|center_vertical"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:elevation="4dp"-->
-                    <!--android:padding="20dp" />-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/editPasswordButton"-->
-                    <!--android:background="@drawable/ic_create_black_24dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_width="48dp"-->
-                    <!--android:layout_height="48dp" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="#fff">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/birthyearEditText"-->
-                    <!--android:hint="Birth Year"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="left|center_vertical"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:elevation="4dp"-->
-                    <!--android:padding="20dp" />-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/editBirthYearButton"-->
-                    <!--android:background="@drawable/ic_create_black_24dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_width="48dp"-->
-                    <!--android:layout_height="48dp" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="#fff">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/lifestyleEditText"-->
-                    <!--android:hint="Lifestyle"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="left|center_vertical"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:elevation="4dp"-->
-                    <!--android:padding="20dp" />-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/editLifestyleButton"-->
-                    <!--android:background="@drawable/ic_create_black_24dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_width="48dp"-->
-                    <!--android:layout_height="48dp" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="#fff">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/partysizeEditText"-->
-                    <!--android:hint="Max Party Size"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="left|center_vertical"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:elevation="4dp"-->
-                    <!--android:padding="20dp" />-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/editPartySizeButton"-->
-                    <!--android:background="@drawable/ic_create_black_24dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_width="48dp"-->
-                    <!--android:layout_height="48dp" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="#fff">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/allergiesEditText"-->
-                    <!--android:hint="Allergies"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="left|center_vertical"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:elevation="4dp"-->
-                    <!--android:padding="20dp" />-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/editAllergiesButton"-->
-                    <!--android:background="@drawable/ic_create_black_24dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_width="48dp"-->
-                    <!--android:layout_height="48dp" />-->
-
-            <!--</LinearLayout>-->
-
-        <!--</LinearLayout>-->
+    <!--<TextView-->
+    <!--android:id="@+id/nameEditText"-->
+    <!--android:hint="Name"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@+id/usernameEditText"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="12dp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:textSize="14sp" />-->
     <!--</RelativeLayout>-->
-<!--</ScrollView>-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@+id/profile_layout"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:background="#fff"-->
+    <!--android:layout_margin="5dp">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/emailEditText"-->
+    <!--android:hint="Email"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="left|center_vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:elevation="4dp"-->
+    <!--android:padding="20dp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/editEmailButton"-->
+    <!--android:background="@drawable/ic_create_black_24dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:background="#fff">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/passwordEditText"-->
+    <!--android:hint="Password"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="left|center_vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:elevation="4dp"-->
+    <!--android:padding="20dp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/editPasswordButton"-->
+    <!--android:background="@drawable/ic_create_black_24dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:background="#fff">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/birthyearEditText"-->
+    <!--android:hint="Birth Year"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="left|center_vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:elevation="4dp"-->
+    <!--android:padding="20dp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/editBirthYearButton"-->
+    <!--android:background="@drawable/ic_create_black_24dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:background="#fff">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/lifestyleEditText"-->
+    <!--android:hint="Lifestyle"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="left|center_vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:elevation="4dp"-->
+    <!--android:padding="20dp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/editLifestyleButton"-->
+    <!--android:background="@drawable/ic_create_black_24dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:background="#fff">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/partysizeEditText"-->
+    <!--android:hint="Max Party Size"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="left|center_vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:elevation="4dp"-->
+    <!--android:padding="20dp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/editPartySizeButton"-->
+    <!--android:background="@drawable/ic_create_black_24dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:background="#fff">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/allergiesEditText"-->
+    <!--android:hint="Allergies"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="left|center_vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:elevation="4dp"-->
+    <!--android:padding="20dp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/editAllergiesButton"-->
+    <!--android:background="@drawable/ic_create_black_24dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+    <!--</RelativeLayout>-->
+    <!--</ScrollView>-->

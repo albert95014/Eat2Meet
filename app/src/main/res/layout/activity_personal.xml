@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -37,13 +38,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp">
+
                 <EditText
                     android:id="@+id/birthYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/enter_birth_year"
                     android:inputType="number"
                     android:maxLength="4"
-                    android:hint="@string/enter_birth_year" />
+                    android:textColorLink="@color/startblue" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Party Size Label -->
@@ -52,13 +55,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp">
+
                 <EditText
                     android:id="@+id/partySize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/max_party_size"
                     android:inputType="number"
                     android:maxLength="4"
-                    android:hint="@string/max_party_size" />
+                    android:selectAllOnFocus="false"
+                    android:textColorLink="@color/startblue" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Radio Food Personality Label -->
@@ -74,6 +80,7 @@
                     android:id="@+id/radioVegan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Vegan" />
 
@@ -81,6 +88,7 @@
                     android:id="@+id/radioVegetarian"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Vegetarian" />
 
@@ -88,6 +96,7 @@
                     android:id="@+id/radioGlutenFree"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Gluten Free" />
 
@@ -95,6 +104,7 @@
                     android:id="@+id/radioCarnivore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Carnivore" />
 
@@ -102,6 +112,7 @@
                     android:id="@+id/radioPescatarian"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Pescatarian" />
 
@@ -109,8 +120,9 @@
                     android:id="@+id/radioNormal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
-                    android:text="Normal" />
+                    android:text="No Restrictions" />
 
             </RadioGroup>
 

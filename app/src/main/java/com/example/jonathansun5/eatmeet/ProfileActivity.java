@@ -2,12 +2,15 @@ package com.example.jonathansun5.eatmeet;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    private android.support.v7.widget.Toolbar mToolbar;
 
     private TextView nameText;
     private TextView emailText;
@@ -40,13 +45,13 @@ public class ProfileActivity extends AppCompatActivity {
     private String partySize;
     private ArrayList<String> allergies;
 
-    @BindView(R.id.saveProfile) Button _saveProfileButton;
-    @BindView(R.id.editEmailButton) Button _editEmailButton;
-    @BindView(R.id.editPasswordButton) Button _editPasswordButton;
-    @BindView(R.id.editBirthYearButton) Button _editBirthYearButton;
-    @BindView(R.id.editLifestyleButton) Button _editLifestyleButton;
-    @BindView(R.id.editPartySizeButton) Button _editPartySizeButton;
-    @BindView(R.id.editAllergiesButton) Button _editAllergiesButton;
+//    @BindView(R.id.saveProfile) Button _saveProfileButton;
+//    @BindView(R.id.editEmailButton) Button _editEmailButton;
+//    @BindView(R.id.editPasswordButton) Button _editPasswordButton;
+//    @BindView(R.id.editBirthYearButton) Button _editBirthYearButton;
+//    @BindView(R.id.editLifestyleButton) Button _editLifestyleButton;
+//    @BindView(R.id.editPartySizeButton) Button _editPartySizeButton;
+//    @BindView(R.id.editAllergiesButton) Button _editAllergiesButton;
 
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -55,6 +60,30 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
+
+
+        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(mToolbar);
+        mToolbar.setTitle("User Profile");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, AllergyActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("allergies", allergies);
+                mContext.startActivity(intent);
+            }
+        });
 
         //Link up UI elements
         nameText = (TextView) findViewById(R.id.nameEditText);
@@ -81,11 +110,11 @@ public class ProfileActivity extends AppCompatActivity {
         //Set profile information
         usernameText.setText("@" + username);
         nameText.setText(name);
-        emailText.setText("Email: " + email);
-        passwordText.setText("Password: " + password);
-        birthyearText.setText("Year of Birth: " + birthYear);
-        lifestyleText.setText("Lifestyle: " + lifestyle);
-        partysizeText.setText("Max Party Size: " + partySize);
+        emailText.setText(email);
+        passwordText.setText(password);
+        birthyearText.setText(birthYear);
+        lifestyleText.setText(lifestyle);
+        partysizeText.setText(partySize);
         String allergyFull = "Allergies: ";
         for (int i = 0; i < allergies.size(); i++){
             if (i != allergies.size() - 1) {
@@ -98,128 +127,128 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        _saveProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Firebase and next activity
-                DatabaseReference users = database.getReference("users");
-                DatabaseReference userEmail = users.child(email.replace(".", ","));
-                userEmail.child("username").setValue(username);
-                userEmail.child("name").setValue(name);
-                userEmail.child("password").setValue(password);
-                userEmail.child("birthYear").setValue(birthYear);
-                userEmail.child("lifestyle").setValue(lifestyle);
-                userEmail.child("partySize").setValue(partySize);
-                userEmail.child("allergies").setValue(allergies);
-            }
-        });
-
-        _editEmailButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Signup activity
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, SignupActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                mContext.startActivity(intent);
-            }
-        });
-
-        _editPasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Signup activity
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, SignupActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                mContext.startActivity(intent);
-            }
-        });
-
-        _editBirthYearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Personal activity
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, PersonalActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                mContext.startActivity(intent);
-            }
-        });
-
-        _editLifestyleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Personal activity
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, PersonalActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                mContext.startActivity(intent);
-            }
-        });
-
-        _editPartySizeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Personal activity
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, PersonalActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                mContext.startActivity(intent);
-            }
-        });
-
-        _editAllergiesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Allergy activity
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, AllergyActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                mContext.startActivity(intent);
-            }
-        });
+//        _saveProfileButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Start the Firebase and next activity
+//                DatabaseReference users = database.getReference("users");
+//                DatabaseReference userEmail = users.child(email.replace(".", ","));
+//                userEmail.child("username").setValue(username);
+//                userEmail.child("name").setValue(name);
+//                userEmail.child("password").setValue(password);
+//                userEmail.child("birthYear").setValue(birthYear);
+//                userEmail.child("lifestyle").setValue(lifestyle);
+//                userEmail.child("partySize").setValue(partySize);
+//                userEmail.child("allergies").setValue(allergies);
+//            }
+//        });
+//
+//        _editEmailButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Start the Signup activity
+//                Context mContext = getBaseContext();
+//                Intent intent = new Intent(mContext, SignupActivity.class);
+//                intent.putExtra("username", username);
+//                intent.putExtra("name", name);
+//                intent.putExtra("email", email);
+//                intent.putExtra("password", password);
+//                intent.putExtra("birthyear", birthYear);
+//                intent.putExtra("lifestyle", lifestyle);
+//                intent.putExtra("partysize", partySize);
+//                intent.putExtra("allergies", allergies);
+//                mContext.startActivity(intent);
+//            }
+//        });
+//
+//        _editPasswordButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Start the Signup activity
+//                Context mContext = getBaseContext();
+//                Intent intent = new Intent(mContext, SignupActivity.class);
+//                intent.putExtra("username", username);
+//                intent.putExtra("name", name);
+//                intent.putExtra("email", email);
+//                intent.putExtra("password", password);
+//                intent.putExtra("birthyear", birthYear);
+//                intent.putExtra("lifestyle", lifestyle);
+//                intent.putExtra("partysize", partySize);
+//                intent.putExtra("allergies", allergies);
+//                mContext.startActivity(intent);
+//            }
+//        });
+//
+//        _editBirthYearButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Start the Personal activity
+//                Context mContext = getBaseContext();
+//                Intent intent = new Intent(mContext, PersonalActivity.class);
+//                intent.putExtra("username", username);
+//                intent.putExtra("name", name);
+//                intent.putExtra("email", email);
+//                intent.putExtra("password", password);
+//                intent.putExtra("birthyear", birthYear);
+//                intent.putExtra("lifestyle", lifestyle);
+//                intent.putExtra("partysize", partySize);
+//                intent.putExtra("allergies", allergies);
+//                mContext.startActivity(intent);
+//            }
+//        });
+//
+//        _editLifestyleButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Start the Personal activity
+//                Context mContext = getBaseContext();
+//                Intent intent = new Intent(mContext, PersonalActivity.class);
+//                intent.putExtra("username", username);
+//                intent.putExtra("name", name);
+//                intent.putExtra("email", email);
+//                intent.putExtra("password", password);
+//                intent.putExtra("birthyear", birthYear);
+//                intent.putExtra("lifestyle", lifestyle);
+//                intent.putExtra("partysize", partySize);
+//                intent.putExtra("allergies", allergies);
+//                mContext.startActivity(intent);
+//            }
+//        });
+//
+//        _editPartySizeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Start the Personal activity
+//                Context mContext = getBaseContext();
+//                Intent intent = new Intent(mContext, PersonalActivity.class);
+//                intent.putExtra("username", username);
+//                intent.putExtra("name", name);
+//                intent.putExtra("email", email);
+//                intent.putExtra("password", password);
+//                intent.putExtra("birthyear", birthYear);
+//                intent.putExtra("lifestyle", lifestyle);
+//                intent.putExtra("partysize", partySize);
+//                intent.putExtra("allergies", allergies);
+//                mContext.startActivity(intent);
+//            }
+//        });
+//
+//        _editAllergiesButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Start the Allergy activity
+//                Context mContext = getBaseContext();
+//                Intent intent = new Intent(mContext, AllergyActivity.class);
+//                intent.putExtra("username", username);
+//                intent.putExtra("name", name);
+//                intent.putExtra("email", email);
+//                intent.putExtra("password", password);
+//                intent.putExtra("birthyear", birthYear);
+//                intent.putExtra("lifestyle", lifestyle);
+//                intent.putExtra("partysize", partySize);
+//                intent.putExtra("allergies", allergies);
+//                mContext.startActivity(intent);
+//            }
+//        });
     }
 }

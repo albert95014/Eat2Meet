@@ -2,6 +2,8 @@ package com.example.jonathansun5.eatmeet;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +19,8 @@ import butterknife.ButterKnife;
 import butterknife.BindView;
 
 public class PersonalActivity extends AppCompatActivity {
+
+    private android.support.v7.widget.Toolbar mToolbar;
 
     @BindView(R.id.birthYear) EditText _birthYearText;
     @BindView(R.id.partySize) EditText _partySizeText;
@@ -37,6 +41,29 @@ public class PersonalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal);
         ButterKnife.bind(this);
+
+        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(mToolbar);
+        mToolbar.setTitle("Preferences & Lifestyle");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, UserNameActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("allergies", allergies);
+                mContext.startActivity(intent);
+            }
+        });
 
         //Get intent information
         Intent receivingIntent = getIntent();
@@ -71,8 +98,8 @@ public class PersonalActivity extends AppCompatActivity {
                     glutenFree.setChecked(true);
                     break;
                 case "Omnivore":
-                    RadioButton omnivore = (RadioButton) findViewById(R.id.radioOmnivore);
-                    omnivore.setChecked(true);
+                    RadioButton carnivore = (RadioButton) findViewById(R.id.radioCarnivore);
+                    carnivore.setChecked(true);
                     break;
                 case "Pescatarian":
                     RadioButton pescatarian = (RadioButton) findViewById(R.id.radioPescatarian);
@@ -149,10 +176,10 @@ public class PersonalActivity extends AppCompatActivity {
                     // Gluten Free chosen
                     lifestyle = "Gluten Free";
                     break;
-            case R.id.radioOmnivore:
+            case R.id.radioCarnivore:
                 if (checked)
                     // Omnivore chosen
-                    lifestyle = "Omnivore";
+                    lifestyle = "Carnivore";
                     break;
             case R.id.radioPescatarian:
                 if (checked)

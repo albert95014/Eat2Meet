@@ -44,7 +44,7 @@ public class AllergyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, PersonalActivity.class);
+                Intent intent = new Intent(mContext, CircleActivity.class);
                 intent.putExtra("username", username);
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);

@@ -35,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView birthyearText;
     private TextView partysizeText;
     private TextView allergiesText;
+    private TextView numFriendsText;
 
     private String name;
     private String email;
@@ -44,14 +45,8 @@ public class ProfileActivity extends AppCompatActivity {
     private String birthYear;
     private String partySize;
     private ArrayList<String> allergies;
-
-//    @BindView(R.id.saveProfile) Button _saveProfileButton;
-//    @BindView(R.id.editEmailButton) Button _editEmailButton;
-//    @BindView(R.id.editPasswordButton) Button _editPasswordButton;
-//    @BindView(R.id.editBirthYearButton) Button _editBirthYearButton;
-//    @BindView(R.id.editLifestyleButton) Button _editLifestyleButton;
-//    @BindView(R.id.editPartySizeButton) Button _editPartySizeButton;
-//    @BindView(R.id.editAllergiesButton) Button _editAllergiesButton;
+    private int numFriends;
+    private ArrayList<String> friends;
 
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -72,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, AllergyActivity.class);
+                Intent intent = new Intent(mContext, searchingmap.class);
                 intent.putExtra("username", username);
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
@@ -94,6 +89,7 @@ public class ProfileActivity extends AppCompatActivity {
         birthyearText = (TextView) findViewById(R.id.birthyearEditText);
         partysizeText = (TextView) findViewById(R.id.partysizeEditText);
         allergiesText = (TextView) findViewById(R.id.allergiesEditText);
+        numFriendsText = (TextView) findViewById(R.id.numFriendsText);
 
         //Get Intent information
         Intent receivingIntent = getIntent();
@@ -106,6 +102,8 @@ public class ProfileActivity extends AppCompatActivity {
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
         allergies = (ArrayList<String>) extras.get("allergies");
+        numFriends = (int) extras.get("numFriends");
+        friends = (ArrayList<String>) extras.get("friends");
 
         //Set profile information
         usernameText.setText("@" + username);
@@ -115,6 +113,7 @@ public class ProfileActivity extends AppCompatActivity {
         birthyearText.setText(birthYear);
         lifestyleText.setText(lifestyle);
         partysizeText.setText(partySize);
+        numFriendsText.setText(String.valueOf(numFriends));
         String allergyFull = "Allergies: ";
         for (int i = 0; i < allergies.size(); i++){
             if (i != allergies.size() - 1) {

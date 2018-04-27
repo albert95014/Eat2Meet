@@ -99,7 +99,7 @@ public class CircleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, PersonalActivity.class);
+                Intent intent = new Intent(mContext, ProfileActivity.class);
                 intent.putExtra("username", username);
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);

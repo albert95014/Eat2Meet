@@ -24,24 +24,19 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="56dp"
+            android:orientation="vertical"
             android:paddingLeft="24dp"
-            android:paddingRight="24dp">
-
-            <CheckBox
-                android:id="@+id/checkboxEggs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
-                android:text="eggs" />
+            android:paddingRight="24dp"
+            android:paddingTop="56dp">
 
             <CheckBox
                 android:id="@+id/checkboxDairy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
+                android:checked="false"
                 android:onClick="onRadioButtonClicked"
                 android:text="dairy" />
 
@@ -49,6 +44,8 @@
                 android:id="@+id/checkboxPineNuts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
+                android:checked="false"
                 android:onClick="onRadioButtonClicked"
                 android:text="pine nuts" />
 
@@ -56,6 +53,7 @@
                 android:id="@+id/checkboxPeanuts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
                 android:onClick="onRadioButtonClicked"
                 android:text="peanuts" />
 
@@ -63,6 +61,8 @@
                 android:id="@+id/checkboxSesame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
+                android:checked="false"
                 android:onClick="onRadioButtonClicked"
                 android:text="sesame" />
 
@@ -70,6 +70,7 @@
                 android:id="@+id/checkboxFish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
                 android:onClick="onRadioButtonClicked"
                 android:text="fish" />
 
@@ -77,31 +78,41 @@
                 android:id="@+id/checkboxGluten"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
                 android:onClick="onRadioButtonClicked"
                 android:text="gluten" />
 
             <!--<CheckBox-->
-                <!--android:id="@+id/checkboxNone"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:onClick="onRadioButtonClicked"-->
-                <!--android:text="none" />-->
+            <!--android:id="@+id/checkboxNone"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:onClick="onRadioButtonClicked"-->
+            <!--android:text="none" />-->
 
             <CheckBox
                 android:id="@+id/checkboxOthers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
                 android:onClick="onRadioButtonClicked"
                 android:text="others" />
 
 
             <!-- Continue Button -->
+            <CheckBox
+                android:id="@+id/checkboxEggs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
+                android:onClick="onRadioButtonClicked"
+                android:text="eggs" />
+
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/allergyContinue"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
                 android:padding="12dp"
                 android:text="Continue" />
 

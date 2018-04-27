@@ -27,6 +27,11 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".PersonalActivity" />
         <activity android:name=".AllergyActivity" />
+        <activity android:name=".GroupNullActivity" />
+        <activity android:name=".AnotherLocationActivity" />
+        <activity android:name=".SetLocationActivity" />
+        <activity android:name=".MaptoGroupActivity" />
+        <activity android:name=".SearchingMapActivity" />
     </application>
 
 </manifest>

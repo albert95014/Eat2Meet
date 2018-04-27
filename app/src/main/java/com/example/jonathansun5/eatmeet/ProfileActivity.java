@@ -35,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView birthyearText;
     private TextView partysizeText;
     private TextView allergiesText;
+    private Button toMapButton;
 
     private String name;
     private String email;
@@ -85,6 +86,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+
+
         //Link up UI elements
         nameText = (TextView) findViewById(R.id.nameEditText);
         emailText = (TextView) findViewById(R.id.emailEditText);
@@ -94,6 +97,15 @@ public class ProfileActivity extends AppCompatActivity {
         birthyearText = (TextView) findViewById(R.id.birthyearEditText);
         partysizeText = (TextView) findViewById(R.id.partysizeEditText);
         allergiesText = (TextView) findViewById(R.id.allergiesEditText);
+        toMapButton = (Button) findViewById(R.id.toMap);
+
+        toMapButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startIntent(getBaseContext(), SetLocationActivity.class);
+            }
+        });
 
         //Get Intent information
         Intent receivingIntent = getIntent();
@@ -148,16 +160,7 @@ public class ProfileActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                // Start the Signup activity
 //                Context mContext = getBaseContext();
-//                Intent intent = new Intent(mContext, SignupActivity.class);
-//                intent.putExtra("username", username);
-//                intent.putExtra("name", name);
-//                intent.putExtra("email", email);
-//                intent.putExtra("password", password);
-//                intent.putExtra("birthyear", birthYear);
-//                intent.putExtra("lifestyle", lifestyle);
-//                intent.putExtra("partysize", partySize);
-//                intent.putExtra("allergies", allergies);
-//                mContext.startActivity(intent);
+//                startIntent(mContext, SignupActivity.class);
 //            }
 //        });
 //
@@ -166,16 +169,7 @@ public class ProfileActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                // Start the Signup activity
 //                Context mContext = getBaseContext();
-//                Intent intent = new Intent(mContext, SignupActivity.class);
-//                intent.putExtra("username", username);
-//                intent.putExtra("name", name);
-//                intent.putExtra("email", email);
-//                intent.putExtra("password", password);
-//                intent.putExtra("birthyear", birthYear);
-//                intent.putExtra("lifestyle", lifestyle);
-//                intent.putExtra("partysize", partySize);
-//                intent.putExtra("allergies", allergies);
-//                mContext.startActivity(intent);
+//                startIntent(mContext, SignupActivity.class);
 //            }
 //        });
 //
@@ -184,16 +178,7 @@ public class ProfileActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                // Start the Personal activity
 //                Context mContext = getBaseContext();
-//                Intent intent = new Intent(mContext, PersonalActivity.class);
-//                intent.putExtra("username", username);
-//                intent.putExtra("name", name);
-//                intent.putExtra("email", email);
-//                intent.putExtra("password", password);
-//                intent.putExtra("birthyear", birthYear);
-//                intent.putExtra("lifestyle", lifestyle);
-//                intent.putExtra("partysize", partySize);
-//                intent.putExtra("allergies", allergies);
-//                mContext.startActivity(intent);
+//                startIntent(mContext, PersonalActivity.class);
 //            }
 //        });
 //
@@ -202,16 +187,7 @@ public class ProfileActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                // Start the Personal activity
 //                Context mContext = getBaseContext();
-//                Intent intent = new Intent(mContext, PersonalActivity.class);
-//                intent.putExtra("username", username);
-//                intent.putExtra("name", name);
-//                intent.putExtra("email", email);
-//                intent.putExtra("password", password);
-//                intent.putExtra("birthyear", birthYear);
-//                intent.putExtra("lifestyle", lifestyle);
-//                intent.putExtra("partysize", partySize);
-//                intent.putExtra("allergies", allergies);
-//                mContext.startActivity(intent);
+//                startIntent(mContext, PersonalActivity.class);
 //            }
 //        });
 //
@@ -220,16 +196,7 @@ public class ProfileActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                // Start the Personal activity
 //                Context mContext = getBaseContext();
-//                Intent intent = new Intent(mContext, PersonalActivity.class);
-//                intent.putExtra("username", username);
-//                intent.putExtra("name", name);
-//                intent.putExtra("email", email);
-//                intent.putExtra("password", password);
-//                intent.putExtra("birthyear", birthYear);
-//                intent.putExtra("lifestyle", lifestyle);
-//                intent.putExtra("partysize", partySize);
-//                intent.putExtra("allergies", allergies);
-//                mContext.startActivity(intent);
+//                startIntent(mContext, PersonalActivity.class);
 //            }
 //        });
 //
@@ -238,17 +205,22 @@ public class ProfileActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                // Start the Allergy activity
 //                Context mContext = getBaseContext();
-//                Intent intent = new Intent(mContext, AllergyActivity.class);
-//                intent.putExtra("username", username);
-//                intent.putExtra("name", name);
-//                intent.putExtra("email", email);
-//                intent.putExtra("password", password);
-//                intent.putExtra("birthyear", birthYear);
-//                intent.putExtra("lifestyle", lifestyle);
-//                intent.putExtra("partysize", partySize);
-//                intent.putExtra("allergies", allergies);
-//                mContext.startActivity(intent);
+//                startIntent(mContext, AllergyActivity.class);
+//
 //            }
 //        });
+    }
+
+    public void startIntent(Context mContext, Class c) {
+        Intent intent = new Intent(mContext, c);
+        intent.putExtra("username", username);
+        intent.putExtra("name", name);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        intent.putExtra("birthyear", birthYear);
+        intent.putExtra("lifestyle", lifestyle);
+        intent.putExtra("partysize", partySize);
+        intent.putExtra("allergies", allergies);
+        mContext.startActivity(intent);
     }
 }

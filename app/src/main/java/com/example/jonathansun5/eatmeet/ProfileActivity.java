@@ -39,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.birthyearEditText) TextView _birthyearText;
     @BindView(R.id.partysizeEditText) TextView _partysizeText;
     @BindView(R.id.allergiesEditText) TextView _allergiesText;
+    @BindView(R.id.friendsEditText) TextView _friendsText;
     @BindView(R.id.numFriendsText) TextView _numFriendsText;
     @BindView(R.id.toMap) Button _toMapButton;
 
@@ -107,6 +108,23 @@ public class ProfileActivity extends AppCompatActivity {
             }
             _allergiesText.setText(allergyFull);
         }
+        String friendsTextGood = "Friends: ";
+        if (friends.size() == 0) {
+            _friendsText.setText(friendsTextGood + "None");
+        } else if (friends.size() == 1) {
+            friendsTextGood = friends.get(0).replace(",", ".");
+        } else {
+            for (int i = 0; i < friends.size(); i++){
+                if (i == friends.size() - 1) {
+                    friendsTextGood += friends.get(i).replace(",", ".");
+                } else {
+                    friendsTextGood += friends.get(i).replace(",", ".") + ", ";
+                }
+            }
+        }
+        _friendsText.setText(friendsTextGood);
+
+
 
         _toMapButton.setOnClickListener(new View.OnClickListener() {
 

@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,6 +71,18 @@ public class CircleActivity extends AppCompatActivity {
         }
         if (friends == null) {
             friends = new ArrayList<>();
+        } else {
+            String cleanFriends = "";
+            for (int i = 0; i < friends.size(); i ++) {
+                String temp = friends.get(i).replace(",", ".");
+                if (i == friends.size() - 1) {
+                    cleanFriends += temp;
+                } else {
+                    temp += ", ";
+                    cleanFriends += temp;
+                }
+            }
+            _currentFriends.setText(cleanFriends);
         }
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -79,20 +92,24 @@ public class CircleActivity extends AppCompatActivity {
         _circleAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String temp = _circleEditText.getText().toString();
-                circleText = _circleEditText.getText().toString().replace(".", ",");
-                ref.child("users").child(circleText).addListenerForSingleValueEvent(new ValueEventListener() {
+                String attemptAddingFriend = _circleEditText.getText().toString();
+                final String tempFriend = attemptAddingFriend.replace(".", ",");
+                ref.child("users").child(tempFriend).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()){
-                            Integer numberOfFriends = Integer.parseInt(numFriends);
-                            numberOfFriends += 1;
-                            numFriends = String.valueOf(numberOfFriends);
-                            if (duplicateChecker(temp) == false){
-                                friends.add(temp);
+                            if (friends.contains(tempFriend)) {
+                                _circleEditText.setText("");
+                                Toast.makeText(CircleActivity.this, "User is already a Friend", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Integer numberOfFriends = Integer.parseInt(numFriends);
+                                numberOfFriends += 1;
+                                numFriends = String.valueOf(numberOfFriends);
+                                friends.add(tempFriend);
+                                _currentFriends.setText(listToString(friends));
+                                _circleEditText.setText("");
+                                Toast.makeText(CircleActivity.this, "User Added!!", Toast.LENGTH_SHORT).show();
                             }
-                            _currentFriends.setText(listToString(friends));
-                            Toast.makeText(CircleActivity.this, "User Added!!", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             Toast.makeText(CircleActivity.this, "User Does Not Exist", Toast.LENGTH_SHORT).show();
@@ -156,21 +173,16 @@ public class CircleActivity extends AppCompatActivity {
     public String listToString(ArrayList<String> listFriends){
         String finalString = "";
         if (listFriends.size() == 1) {
-            finalString = listFriends.get(0);
+            finalString = listFriends.get(0).replace(",", ".");
         } else {
             for (int i = 0; i < listFriends.size(); i++){
-                finalString += listFriends.get(i) + ", ";
+                if (i == listFriends.size() - 1) {
+                    finalString += listFriends.get(i).replace(",", ".");
+                } else {
+                    finalString += listFriends.get(i).replace(",", ".") + ", ";
+                }
             }
         }
         return finalString;
-    }
-
-    public Boolean duplicateChecker(String name){
-        for (int i = 0; i < friends.size(); i++){
-            if (name.equals(friends.get(i))){
-                return true;
-            }
-        }
-        return false;
     }
 }

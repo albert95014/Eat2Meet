@@ -65,13 +65,13 @@ public class PersonalActivity extends AppCompatActivity {
         }
         if (lifestyle != null) {
             switch (lifestyle) {
-                case "Vegetarian":
-                    RadioButton vegetarian = (RadioButton) findViewById(R.id.radioVegetarian);
-                    vegetarian.setChecked(true);
-                    break;
                 case "Vegan":
                     RadioButton vegan = (RadioButton) findViewById(R.id.radioVegan);
                     vegan.setChecked(true);
+                    break;
+                case "Vegetarian":
+                    RadioButton vegetarian = (RadioButton) findViewById(R.id.radioVegetarian);
+                    vegetarian.setChecked(true);
                     break;
                 case "Gluten Free":
                     RadioButton glutenFree = (RadioButton) findViewById(R.id.radioGlutenFree);
@@ -85,11 +85,15 @@ public class PersonalActivity extends AppCompatActivity {
                     RadioButton pescatarian = (RadioButton) findViewById(R.id.radioPescatarian);
                     pescatarian.setChecked(true);
                     break;
-                case "Normal":
-                    RadioButton normal = (RadioButton) findViewById(R.id.radioNormal);
-                    normal.setChecked(true);
+                case "No Restrictions":
+                    RadioButton noRestrictions = (RadioButton) findViewById(R.id.radioNoRestrictions);
+                    noRestrictions.setChecked(true);
                     break;
             }
+        } else {
+            RadioButton noRestrictions = (RadioButton) findViewById(R.id.radioNoRestrictions);
+            noRestrictions.setChecked(true);
+            lifestyle = "No Restrictions";
         }
 
         _personalContinueButton.setOnClickListener(new View.OnClickListener() {

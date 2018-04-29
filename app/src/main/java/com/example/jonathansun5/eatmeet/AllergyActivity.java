@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,16 +54,53 @@ public class AllergyActivity extends AppCompatActivity {
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
         allergies = (ArrayList<String>) extras.get("allergies");
+
+        Log.e("ALLERGIES ARE: ", Arrays.toString(new ArrayList[]{allergies}));
+
         numFriends = (String) extras.get("numFriends");
         friends = (ArrayList<String>) extras.get("friends");
 
         if (allergies != null) {
             for (String allergy : allergies) {
-                String id = String.format("R.id.checkbox%s", allergy.replace(" ", ""));
-                CheckBox allergicTo = (CheckBox) findViewById(Integer.parseInt(id));
-                allergicTo.setChecked(true);
+                Log.e("Auto populate111: ", allergy);
+                if (allergy.equals("Eggs")) {
+                    Log.e("Auto populate: ", allergy);
+                    ((CheckBox) findViewById(R.id.checkboxEggs)).setChecked(true);
+                }
+                if (allergy.equals("Dairy")) {
+                    Log.e("Auto populate: ", allergy);
+                    ((CheckBox) findViewById(R.id.checkboxDairy)).setChecked(true);
+                }
+                if (allergy.equals("Pine Nuts")) {
+                    Log.e("Auto populate: ", allergy);
+                    ((CheckBox) findViewById(R.id.checkboxPineNuts)).setChecked(true);
+                }
+                if (allergy.equals("Peanuts")) {
+                    Log.e("Auto populate: ", allergy);
+                    ((CheckBox) findViewById(R.id.checkboxPeanuts)).setChecked(true);
+                }
+                if (allergy.equals("Sesame")) {
+                    Log.e("Auto populate: ", allergy);
+                    ((CheckBox) findViewById(R.id.checkboxSesame)).setChecked(true);
+                }
+                if (allergy.equals("Fish")) {
+                    Log.e("Auto populate: ", allergy);
+                    ((CheckBox) findViewById(R.id.checkboxFish)).setChecked(true);
+                }
+                if (allergy.equals("Gluten")) {
+                    Log.e("Auto populate: ", allergy);
+                    ((CheckBox) findViewById(R.id.checkboxGluten)).setChecked(true);
+                }
+                if (allergy.equals("Others")) {
+                    Log.e("Auto populate: ", allergy);
+                    ((CheckBox) findViewById(R.id.checkboxOthers)).setChecked(true);
+                }
+//                String id = String.format("R.id.checkbox%s", allergy.replace(" ", ""));
+//                CheckBox allergicTo = (CheckBox) findViewById(Integer.parseInt(id));
+//                allergicTo.setChecked(true);
             }
         } else {
+            Log.e("Allergy is empty ", "why???");
             allergies = new ArrayList<>();
         }
 
@@ -95,7 +133,7 @@ public class AllergyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, CircleActivity.class);
+                Intent intent = new Intent(mContext, PersonalActivity.class);
                 intent.putExtra("username", username);
                 intent.putExtra("phonenumber", phoneNumber);
                 intent.putExtra("name", name);
@@ -105,6 +143,9 @@ public class AllergyActivity extends AppCompatActivity {
                 intent.putExtra("lifestyle", lifestyle);
                 intent.putExtra("partysize", partySize);
                 intent.putExtra("allergies", allergies);
+
+                Log.e("Passing from Circle", "allergies is: " + Arrays.toString(new ArrayList[]{allergies}));
+
                 intent.putExtra("numFriends", numFriends);
                 intent.putExtra("friends", friends);
                 mContext.startActivity(intent);
@@ -120,52 +161,76 @@ public class AllergyActivity extends AppCompatActivity {
         // Check which checkbox button was clicked
         switch(view.getId()) {
             case R.id.checkboxEggs:
-                if (checked)
+                if (checked && !allergies.contains("Eggs")) {
+                    Log.e("adding to allergies: ", "Eggs");
                     allergies.add("Eggs");
-                else
+                } else {
+                    Log.e("remove from allergies: ", "Eggs");
                     allergies.remove("Eggs");
+                }
                 break;
             case R.id.checkboxDairy:
-                if (checked)
+                if (checked && !allergies.contains("Dairy")) {
+                    Log.e("adding to allergies: ", "Dairy");
                     allergies.add("Dairy");
-                else
+                } else {
+                    Log.e("remove from allergies: ", "Dairy");
                     allergies.remove("Dairy");
+                }
                 break;
             case R.id.checkboxPineNuts:
-                if (checked)
+                if (checked && !allergies.contains("Pine Nuts")) {
+                    Log.e("adding to allergies: ", "Pine Nuts");
                     allergies.add("Pine Nuts");
-                else
+                } else {
+                    Log.e("remove from allergies: ", "Pine Nuts");
                     allergies.remove("Pine Nuts");
+                }
                 break;
             case R.id.checkboxPeanuts:
-                if (checked)
+                if (checked && !allergies.contains("Peanuts")) {
+                    Log.e("adding to allergies: ", "Peanuts");
                     allergies.add("Peanuts");
-                else
+                } else {
+                    Log.e("remove from allergies: ", "Peanuts");
                     allergies.remove("Peanuts");
+                }
                 break;
             case R.id.checkboxSesame:
-                if (checked)
+                if (checked && !allergies.contains("Sesame")) {
+                    Log.e("adding to allergies: ", "Sesame");
                     allergies.add("Sesame");
-                else
+                } else {
+                    Log.e("remove from allergies: ", "Sesame");
                     allergies.remove("Sesame");
+                }
                 break;
             case R.id.checkboxFish:
-                if (checked)
+                if (checked && !allergies.contains("Fish")) {
+                    Log.e("adding to allergies: ", "Fish");
                     allergies.add("Fish");
-                else
+                } else {
+                    Log.e("remove from allergies: ", "Fish");
                     allergies.remove("Fish");
+                }
                 break;
             case R.id.checkboxGluten:
-                if (checked)
+                if (checked && !allergies.contains("Gluten")) {
+                    Log.e("adding to allergies: ", "Gluten");
                     allergies.add("Gluten");
-                else
+                } else {
+                    Log.e("remove from allergies: ", "Gluten");
                     allergies.remove("Gluten");
+                }
                 break;
             case R.id.checkboxOthers:
-                if (checked)
+                if (checked && !allergies.contains("Others")) {
+                    Log.e("adding to allergies: ", "Others");
                     allergies.add("Others");
-                else
+                } else {
+                    Log.e("remove from allergies: ", "Others");
                     allergies.remove("Others");
+                }
                 break;
         }
     }

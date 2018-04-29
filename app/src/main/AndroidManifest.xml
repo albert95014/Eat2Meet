@@ -27,12 +27,21 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".PersonalActivity" />
         <activity android:name=".AllergyActivity" />
-        <activity android:name=".CircleActivity"></activity>
+        <activity android:name=".CircleActivity" />
         <activity android:name=".GroupNullActivity" />
         <activity android:name=".AnotherLocationActivity" />
         <activity android:name=".SetLocationActivity" />
         <activity android:name=".MaptoGroupActivity" />
         <activity android:name=".SearchingMapActivity" />
+        <activity
+            android:name=".CommentFeedActivity"
+            android:label="@string/title_activity_comment_feed_activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+            <!-- makes this the first activity presented on app launch. -->
+            <!-- you will want to move this intent filter to a different activity later -->
+
+        </activity>
     </application>
 
 </manifest>

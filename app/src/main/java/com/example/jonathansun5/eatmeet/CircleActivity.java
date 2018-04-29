@@ -155,8 +155,12 @@ public class CircleActivity extends AppCompatActivity {
 
     public String listToString(ArrayList<String> listFriends){
         String finalString = "";
-        for (int i = 0; i < listFriends.size(); i++){
-            finalString += listFriends.get(i) + ", ";
+        if (listFriends.size() == 1) {
+            finalString = listFriends.get(0);
+        } else {
+            for (int i = 0; i < listFriends.size(); i++){
+                finalString += listFriends.get(i) + ", ";
+            }
         }
         return finalString;
     }

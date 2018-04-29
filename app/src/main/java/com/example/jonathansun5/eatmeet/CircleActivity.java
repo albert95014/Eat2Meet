@@ -2,6 +2,8 @@ package com.example.jonathansun5.eatmeet;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +21,14 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class CircleActivity extends AppCompatActivity {
+
+    @BindView(R.id.my_toolbar) android.support.v7.widget.Toolbar _mToolbar;
+    @BindView(R.id.circleAdd) Button _circleAdd;
+    @BindView(R.id.circleContinue) Button _circleContinue;
+    @BindView(R.id.circleEditText) EditText _circleEditText;
 
     private String name;
     private String email;
@@ -32,21 +40,43 @@ public class CircleActivity extends AppCompatActivity {
     private ArrayList<String> allergies;
     private ArrayList<String> friends;
     private String circleText;
-    private int numFriends;
-
-    private Button circleAdd;
-    private Button circleContinue;
-    private EditText circleEditText;
-
-
-    //@BindView(R.id.circleAdd) Button circleAdd;
-    //@BindView(R.id.circleContinue) Button circleContinue;
-    //@BindView(R.id.circleEditText) EditText circleEditText;
+    private String numFriends;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle);
+        ButterKnife.bind(this);
+
+
+
+        setSupportActionBar(_mToolbar);
+        _mToolbar.setTitle("Add Friends");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, AllergyActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
+                mContext.startActivity(intent);
+            }
+        });
+
+
+
+
 
         //Get intent information
         Intent receivingIntent = getIntent();
@@ -59,26 +89,30 @@ public class CircleActivity extends AppCompatActivity {
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
         allergies = (ArrayList<String>) extras.get("allergies");
-        numFriends = 0;
-        friends = new ArrayList<>();
-
-        circleAdd = (Button) findViewById(R.id.circleAdd);
-        circleContinue = (Button) findViewById(R.id.circleContinue);
-        circleEditText = (EditText) findViewById(R.id.circleEditText);
+        numFriends = (String) extras.get("numFriends");
+        friends = (ArrayList<String>) extras.get("friends");
+        if (numFriends == null) {
+            numFriends = String.valueOf(0);
+        }
+        if (friends == null) {
+            friends = new ArrayList<>();
+        }
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference();
 
 
-        circleAdd.setOnClickListener(new View.OnClickListener() {
+        _circleAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                circleText = circleEditText.getText().toString().replace(".", ",");
+                circleText = _circleEditText.getText().toString().replace(".", ",");
                 ref.child("users").child(circleText).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()){
-                            numFriends += 1;
+                            Integer numberOfFriends = Integer.parseInt(numFriends);
+                            numberOfFriends += 1;
+                            numFriends = String.valueOf(numberOfFriends);
                             friends.add(circleText);
                             Toast.makeText(CircleActivity.this, "User Added!!", Toast.LENGTH_SHORT).show();
                         }
@@ -95,7 +129,7 @@ public class CircleActivity extends AppCompatActivity {
             }
         });
 
-        circleContinue.setOnClickListener(new View.OnClickListener() {
+        _circleContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context mContext = getBaseContext();

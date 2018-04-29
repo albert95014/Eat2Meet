@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jonathansun5.eatmeet.GroupNullActivity">
+    android:fitsSystemWindows="true">
     <LinearLayout
-        android:layout_width="wrap_content"
         android:orientation="vertical"
-        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textSize="25sp"
+            android:text="No members found! Try again later."
+            android:textAlignment="center"
+            android:singleLine="false" />
 
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/back"
+            android:background="@drawable/buttonstyleithgradient"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:text="No member found"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="25sp"
-            android:text="try again later"
-            />
+            android:text="back"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="35dp"
+            android:layout_alignParentBottom="true" />
 
     </LinearLayout>
-    <Button
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="back"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp" />
 
-</RelativeLayout>
+
+</ScrollView>

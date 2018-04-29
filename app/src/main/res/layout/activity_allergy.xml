@@ -109,6 +109,7 @@
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/allergyContinue"
+                android:background="@drawable/buttonstyleithgradient"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"

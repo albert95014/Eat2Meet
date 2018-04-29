@@ -28,6 +28,7 @@ public class PersonalActivity extends AppCompatActivity {
     private String email;
     private String password;
     private String username;
+    private String phoneNumber;
     private String lifestyle;
     private String birthYear;
     private String partySize;
@@ -41,30 +42,6 @@ public class PersonalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal);
         ButterKnife.bind(this);
 
-        setSupportActionBar(_mToolbar);
-        _mToolbar.setTitle("Preferences & Lifestyle");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, UserNameActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                intent.putExtra("numFriends", numFriends);
-                intent.putExtra("friends", friends);
-                mContext.startActivity(intent);
-            }
-        });
-
         //Get intent information
         Intent receivingIntent = getIntent();
         Bundle extras = receivingIntent.getExtras();
@@ -72,6 +49,7 @@ public class PersonalActivity extends AppCompatActivity {
         email = (String) extras.get("email");
         password = (String) extras.get("password");
         username = (String) extras.get("username");
+        phoneNumber = (String) extras.get("phonenumber");
         lifestyle = (String) extras.get("lifestyle");
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
@@ -141,6 +119,7 @@ public class PersonalActivity extends AppCompatActivity {
                     Context mContext = getBaseContext();
                     Intent intent = new Intent(mContext, AllergyActivity.class);
                     intent.putExtra("username", username);
+                    intent.putExtra("phonenumber", phoneNumber);
                     intent.putExtra("name", name);
                     intent.putExtra("email", email);
                     intent.putExtra("password", password);
@@ -154,6 +133,31 @@ public class PersonalActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getBaseContext(), "Please Fix Inputs", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        setSupportActionBar(_mToolbar);
+        _mToolbar.setTitle("Preferences & Lifestyle");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, UserNameActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("phonenumber", phoneNumber);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
+                mContext.startActivity(intent);
             }
         });
 
@@ -190,10 +194,10 @@ public class PersonalActivity extends AppCompatActivity {
                     // Pescatarian chosen
                     lifestyle = "Pescatarian";
                     break;
-            case R.id.radioNormal:
+            case R.id.radioNoRestrictions:
                 if(checked)
-                    // Normal chosen
-                    lifestyle = "Normal";
+                    // No Restrictions chosen
+                    lifestyle = "No Restrictions";
                     break;
         }
     }

@@ -24,6 +24,7 @@ public class SignupActivity extends AppCompatActivity {
     private String email;
     private String password;
     private String username;
+    private String phoneNumber;
     private String lifestyle;
     private String birthYear;
     private String partySize;
@@ -53,6 +54,7 @@ public class SignupActivity extends AppCompatActivity {
             email = (String) extras.get("email");
             password = (String) extras.get("password");
             username = (String) extras.get("username");
+            phoneNumber = (String) extras.get("phonenumber");
             lifestyle = (String) extras.get("lifestyle");
             birthYear = (String) extras.get("birthyear");
             partySize = (String) extras.get("partysize");
@@ -83,6 +85,7 @@ public class SignupActivity extends AppCompatActivity {
                 intent.putExtra("email", email);
                 intent.putExtra("password", password);
                 intent.putExtra("username", username);
+                intent.putExtra("phonenumber", phoneNumber);
                 intent.putExtra("lifestyle", lifestyle);
                 intent.putExtra("birthyear", birthYear);
                 intent.putExtra("partysize", partySize);

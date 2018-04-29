@@ -34,6 +34,7 @@ public class CircleActivity extends AppCompatActivity {
     private String email;
     private String password;
     private String username;
+    private String phoneNumber;
     private String lifestyle;
     private String birthYear;
     private String partySize;
@@ -48,36 +49,6 @@ public class CircleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_circle);
         ButterKnife.bind(this);
 
-
-
-        setSupportActionBar(_mToolbar);
-        _mToolbar.setTitle("Add Friends");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, AllergyActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                intent.putExtra("numFriends", numFriends);
-                intent.putExtra("friends", friends);
-                mContext.startActivity(intent);
-            }
-        });
-
-
-
-
-
         //Get intent information
         Intent receivingIntent = getIntent();
         Bundle extras = receivingIntent.getExtras();
@@ -85,6 +56,7 @@ public class CircleActivity extends AppCompatActivity {
         email = (String) extras.get("email");
         password = (String) extras.get("password");
         username = (String) extras.get("username");
+        phoneNumber = (String) extras.get("phonenumber");
         lifestyle = (String) extras.get("lifestyle");
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
@@ -135,6 +107,7 @@ public class CircleActivity extends AppCompatActivity {
                 Context mContext = getBaseContext();
                 Intent intent = new Intent(mContext, ProfileActivity.class);
                 intent.putExtra("username", username);
+                intent.putExtra("phonenumber", phoneNumber);
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
                 intent.putExtra("password", password);
@@ -148,6 +121,29 @@ public class CircleActivity extends AppCompatActivity {
             }
         });
 
-
+        setSupportActionBar(_mToolbar);
+        _mToolbar.setTitle("Add Friends");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, AllergyActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("phonenumber", phoneNumber);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
+                mContext.startActivity(intent);
+            }
+        });
     }
 }

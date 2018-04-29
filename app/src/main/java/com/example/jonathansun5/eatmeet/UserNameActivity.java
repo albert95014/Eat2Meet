@@ -18,15 +18,16 @@ import butterknife.BindView;
 
 public class UserNameActivity extends AppCompatActivity {
 
-    private android.support.v7.widget.Toolbar mToolbar;
-
+    @BindView(R.id.my_toolbar) android.support.v7.widget.Toolbar _mToolbar;
     @BindView(R.id.usernameInput) EditText _usernameText;
+    @BindView(R.id.phoneEditText) EditText _phoneNumberText;
     @BindView(R.id.usernameContinue) Button _usernameContinueButton;
 
     private String name;
     private String email;
     private String password;
     private String username;
+    private String phoneNumber;
     private String lifestyle;
     private String birthYear;
     private String partySize;
@@ -40,31 +41,6 @@ public class UserNameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_name);
         ButterKnife.bind(this);
 
-        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(mToolbar);
-        mToolbar.setTitle("Create a Username");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, SignupActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                intent.putExtra("numFriends", numFriends);
-                intent.putExtra("friends", friends);
-                mContext.startActivity(intent);
-            }
-        });
-
         //Get Intent information from sign-up
         Intent recevingIntent = getIntent();
         Bundle extras = recevingIntent.getExtras();
@@ -72,6 +48,7 @@ public class UserNameActivity extends AppCompatActivity {
         email = (String) extras.get("email");
         password = (String) extras.get("password");
         username = (String) extras.get("username");
+        phoneNumber = (String) extras.get("phonenumber");
         lifestyle = (String) extras.get("lifestyle");
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
@@ -83,17 +60,38 @@ public class UserNameActivity extends AppCompatActivity {
             _usernameText.setText(username);
         }
 
+        if (phoneNumber != null) {
+            _phoneNumberText.setText(phoneNumber);
+        }
+
         _usernameContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = _usernameText.getText().toString();
+                username = _usernameText.getText().toString();
+                phoneNumber = _phoneNumberText.getText().toString();
+                Boolean usernameOK = false;
+                Boolean phonenumberOK = false;
                 if (username.isEmpty() || username.length() < 3) {
+                    usernameOK = false;
                     _usernameText.setError("at least 3 characters");
                 } else {
+                    usernameOK = true;
+                }
+
+                if (phoneNumber.isEmpty() || phoneNumber.length() < 10) {
+                    phonenumberOK = false;
+                    _phoneNumberText.setError("not a valid phone number");
+                } else {
+                    phonenumberOK = true;
+                }
+
+                if (usernameOK && phonenumberOK) {
                     _usernameText.setError(null);
+                    _phoneNumberText.setError(null);
                     Context mContext = getBaseContext();
                     Intent intent = new Intent(mContext, PersonalActivity.class);
                     intent.putExtra("username", username);
+                    intent.putExtra("phonenumber", phoneNumber);
                     intent.putExtra("name", name);
                     intent.putExtra("email", email);
                     intent.putExtra("password", password);
@@ -105,6 +103,31 @@ public class UserNameActivity extends AppCompatActivity {
                     intent.putExtra("friends", friends);
                     mContext.startActivity(intent);
                 }
+            }
+        });
+
+        setSupportActionBar(_mToolbar);
+        _mToolbar.setTitle("Create a Username");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, SignupActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("phonenumber", phoneNumber);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
+                mContext.startActivity(intent);
             }
         });
     }

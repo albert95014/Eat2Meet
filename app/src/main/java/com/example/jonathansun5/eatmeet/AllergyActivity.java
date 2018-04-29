@@ -27,6 +27,7 @@ public class AllergyActivity extends AppCompatActivity {
     private String email;
     private String password;
     private String username;
+    private String phoneNumber;
     private String lifestyle;
     private String birthYear;
     private String partySize;
@@ -40,30 +41,6 @@ public class AllergyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_allergy);
         ButterKnife.bind(this);
 
-        setSupportActionBar(_mToolbar);
-        _mToolbar.setTitle("Allergies");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, CircleActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                intent.putExtra("numFriends", numFriends);
-                intent.putExtra("friends", friends);
-                mContext.startActivity(intent);
-            }
-        });
-
         //Get Extras
         Intent receivingIntent = getIntent();
         Bundle extras = receivingIntent.getExtras();
@@ -71,6 +48,7 @@ public class AllergyActivity extends AppCompatActivity {
         email = (String) extras.get("email");
         password = (String) extras.get("password");
         username = (String) extras.get("username");
+        phoneNumber = (String) extras.get("phonenumber");
         lifestyle = (String) extras.get("lifestyle");
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
@@ -94,6 +72,7 @@ public class AllergyActivity extends AppCompatActivity {
                 Context mContext = getBaseContext();
                 Intent intent = new Intent(mContext, CircleActivity.class);
                 intent.putExtra("username", username);
+                intent.putExtra("phonenumber", phoneNumber);
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
                 intent.putExtra("password", password);
@@ -107,9 +86,33 @@ public class AllergyActivity extends AppCompatActivity {
             }
         });
 
+        setSupportActionBar(_mToolbar);
+        _mToolbar.setTitle("Allergies");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, CircleActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("phonenumber", phoneNumber);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                intent.putExtra("birthyear", birthYear);
+                intent.putExtra("lifestyle", lifestyle);
+                intent.putExtra("partysize", partySize);
+                intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
-    public void onRadioButtonClicked(View view) {
+    public void onCheckboxClicked(View view) {
         // Is the button now checked?
         boolean checked = ((CheckBox) view).isChecked();
         Log.d("Checked", "Added to Allergies");
@@ -119,38 +122,50 @@ public class AllergyActivity extends AppCompatActivity {
             case R.id.checkboxEggs:
                 if (checked)
                     allergies.add("Eggs");
+                else
+                    allergies.remove("Eggs");
                 break;
             case R.id.checkboxDairy:
                 if (checked)
                     allergies.add("Dairy");
+                else
+                    allergies.remove("Dairy");
                 break;
             case R.id.checkboxPineNuts:
                 if (checked)
                     allergies.add("Pine Nuts");
+                else
+                    allergies.remove("Pine Nuts");
                 break;
             case R.id.checkboxPeanuts:
                 if (checked)
                     allergies.add("Peanuts");
+                else
+                    allergies.remove("Peanuts");
                 break;
             case R.id.checkboxSesame:
                 if (checked)
                     allergies.add("Sesame");
+                else
+                    allergies.remove("Sesame");
                 break;
             case R.id.checkboxFish:
                 if (checked)
                     allergies.add("Fish");
+                else
+                    allergies.remove("Fish");
                 break;
             case R.id.checkboxGluten:
                 if (checked)
                     allergies.add("Gluten");
+                else
+                    allergies.remove("Gluten");
                 break;
-//            case R.id.checkboxNone:
-//                if (checked)
-//                    allergies.add("none");
-//                break;
             case R.id.checkboxOthers:
                 if (checked)
                     allergies.add("Others");
+                else
+                    allergies.remove("Others");
                 break;
         }
     }

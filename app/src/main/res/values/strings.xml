@@ -19,4 +19,5 @@
     <string name="enter_birth_year">Birth Year</string>
     <string name="max_party_size">Max Dining Party Size</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_comment_feed_activity">CommentFeedActivty</string>
 </resources>

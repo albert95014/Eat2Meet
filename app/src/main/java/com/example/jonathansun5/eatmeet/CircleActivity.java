@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +30,7 @@ public class CircleActivity extends AppCompatActivity {
     @BindView(R.id.circleAdd) Button _circleAdd;
     @BindView(R.id.circleContinue) Button _circleContinue;
     @BindView(R.id.circleEditText) EditText _circleEditText;
+    @BindView(R.id.currentlyAdded) TextView _currentFriends;
 
     private String name;
     private String email;
@@ -77,6 +79,7 @@ public class CircleActivity extends AppCompatActivity {
         _circleAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String temp = _circleEditText.getText().toString();
                 circleText = _circleEditText.getText().toString().replace(".", ",");
                 ref.child("users").child(circleText).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -85,7 +88,10 @@ public class CircleActivity extends AppCompatActivity {
                             Integer numberOfFriends = Integer.parseInt(numFriends);
                             numberOfFriends += 1;
                             numFriends = String.valueOf(numberOfFriends);
-                            friends.add(circleText);
+                            if (duplicateChecker(temp) == false){
+                                friends.add(temp);
+                            }
+                            _currentFriends.setText(listToString(friends));
                             Toast.makeText(CircleActivity.this, "User Added!!", Toast.LENGTH_SHORT).show();
                         }
                         else{
@@ -145,5 +151,22 @@ public class CircleActivity extends AppCompatActivity {
                 mContext.startActivity(intent);
             }
         });
+    }
+
+    public String listToString(ArrayList<String> listFriends){
+        String finalString = "";
+        for (int i = 0; i < listFriends.size(); i++){
+            finalString += listFriends.get(i) + ", ";
+        }
+        return finalString;
+    }
+
+    public Boolean duplicateChecker(String name){
+        for (int i = 0; i < friends.size(); i++){
+            if (name.equals(friends.get(i))){
+                return true;
+            }
+        }
+        return false;
     }
 }

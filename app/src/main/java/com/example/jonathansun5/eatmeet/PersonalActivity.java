@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,8 +19,7 @@ import butterknife.BindView;
 
 public class PersonalActivity extends AppCompatActivity {
 
-    private android.support.v7.widget.Toolbar mToolbar;
-
+    @BindView(R.id.my_toolbar) android.support.v7.widget.Toolbar _mToolbar;
     @BindView(R.id.birthYear) EditText _birthYearText;
     @BindView(R.id.partySize) EditText _partySizeText;
     @BindView(R.id.personalContinue) Button _personalContinueButton;
@@ -34,7 +32,8 @@ public class PersonalActivity extends AppCompatActivity {
     private String birthYear;
     private String partySize;
     private ArrayList<String> allergies;
-    private RadioGroup radiogroup;
+    private String numFriends;
+    private ArrayList<String> friends;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +41,12 @@ public class PersonalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal);
         ButterKnife.bind(this);
 
-        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(mToolbar);
-        mToolbar.setTitle("Preferences & Lifestyle");
+        setSupportActionBar(_mToolbar);
+        _mToolbar.setTitle("Preferences & Lifestyle");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
@@ -61,6 +59,8 @@ public class PersonalActivity extends AppCompatActivity {
                 intent.putExtra("lifestyle", lifestyle);
                 intent.putExtra("partysize", partySize);
                 intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
                 mContext.startActivity(intent);
             }
         });
@@ -76,6 +76,8 @@ public class PersonalActivity extends AppCompatActivity {
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
         allergies = (ArrayList<String>) extras.get("allergies");
+        numFriends = (String) extras.get("numFriends");
+        friends = (ArrayList<String>) extras.get("friends");
 
         if (birthYear != null) {
             _birthYearText.setText(birthYear);
@@ -146,6 +148,8 @@ public class PersonalActivity extends AppCompatActivity {
                     intent.putExtra("partysize", partySize);
                     intent.putExtra("lifestyle", lifestyle);
                     intent.putExtra("allergies", allergies);
+                    intent.putExtra("numFriends", numFriends);
+                    intent.putExtra("friends", friends);
                     mContext.startActivity(intent);
                 } else {
                     Toast.makeText(getBaseContext(), "Please Fix Inputs", Toast.LENGTH_LONG).show();

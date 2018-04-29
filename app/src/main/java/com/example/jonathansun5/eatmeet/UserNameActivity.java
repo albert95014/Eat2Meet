@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -30,6 +31,8 @@ public class UserNameActivity extends AppCompatActivity {
     private String birthYear;
     private String partySize;
     private ArrayList<String> allergies;
+    private String numFriends;
+    private ArrayList<String> friends;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,8 @@ public class UserNameActivity extends AppCompatActivity {
                 intent.putExtra("lifestyle", lifestyle);
                 intent.putExtra("partysize", partySize);
                 intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
                 mContext.startActivity(intent);
             }
         });
@@ -71,6 +76,8 @@ public class UserNameActivity extends AppCompatActivity {
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
         allergies = (ArrayList<String>) extras.get("allergies");
+        numFriends = (String) extras.get("numFriends");
+        friends = (ArrayList<String>) extras.get("friends");
 
         if (username != null) {
             _usernameText.setText(username);
@@ -94,6 +101,8 @@ public class UserNameActivity extends AppCompatActivity {
                     intent.putExtra("birthyear", birthYear);
                     intent.putExtra("partysize", partySize);
                     intent.putExtra("allergies", allergies);
+                    intent.putExtra("numFriends", numFriends);
+                    intent.putExtra("friends", friends);
                     mContext.startActivity(intent);
                 }
             }

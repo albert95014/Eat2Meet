@@ -25,18 +25,19 @@ package com.example.jonathansun5.eatmeet;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private android.support.v7.widget.Toolbar mToolbar;
+//    private android.support.v7.widget.Toolbar _mToolbar;
 
-    private TextView nameText;
-    private TextView emailText;
-    private TextView passwordText;
-    private TextView usernameText;
-    private TextView lifestyleText;
-    private TextView birthyearText;
-    private TextView partysizeText;
-    private TextView allergiesText;
-    private TextView numFriendsText;
-    private Button toMapButton;
+    @BindView(R.id.my_toolbar) android.support.v7.widget.Toolbar _mToolbar;
+    @BindView(R.id.nameEditText) TextView _nameText;
+    @BindView(R.id.emailEditText) TextView _emailText;
+    @BindView(R.id.passwordEditText) TextView _passwordText;
+    @BindView(R.id.usernameEditText) TextView _usernameText;
+    @BindView(R.id.lifestyleEditText) TextView _lifestyleText;
+    @BindView(R.id.birthyearEditText) TextView _birthyearText;
+    @BindView(R.id.partysizeEditText) TextView _partysizeText;
+    @BindView(R.id.allergiesEditText) TextView _allergiesText;
+    @BindView(R.id.numFriendsText) TextView _numFriendsText;
+    @BindView(R.id.toMap) Button _toMapButton;
 
     private String name;
     private String email;
@@ -46,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String birthYear;
     private String partySize;
     private ArrayList<String> allergies;
-    private int numFriends;
+    private String numFriends;
     private ArrayList<String> friends;
 
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -58,17 +59,16 @@ public class ProfileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(mToolbar);
-        mToolbar.setTitle("User Profile");
+        setSupportActionBar(_mToolbar);
+        _mToolbar.setTitle("User Profile");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, SearchingMapActivity.class);
+                Intent intent = new Intent(mContext, CircleActivity.class);
                 intent.putExtra("username", username);
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
@@ -77,6 +77,8 @@ public class ProfileActivity extends AppCompatActivity {
                 intent.putExtra("lifestyle", lifestyle);
                 intent.putExtra("partysize", partySize);
                 intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
                 mContext.startActivity(intent);
             }
         });
@@ -84,18 +86,9 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         //Link up UI elements
-        nameText = (TextView) findViewById(R.id.nameEditText);
-        emailText = (TextView) findViewById(R.id.emailEditText);
-        passwordText = (TextView) findViewById(R.id.passwordEditText);
-        usernameText = (TextView) findViewById(R.id.usernameEditText);
-        lifestyleText = (TextView) findViewById(R.id.lifestyleEditText);
-        birthyearText = (TextView) findViewById(R.id.birthyearEditText);
-        partysizeText = (TextView) findViewById(R.id.partysizeEditText);
-        allergiesText = (TextView) findViewById(R.id.allergiesEditText);
-        numFriendsText = (TextView) findViewById(R.id.numFriendsText);
-        toMapButton = (Button) findViewById(R.id.toMap);
 
-        toMapButton.setOnClickListener(new View.OnClickListener() {
+
+        _toMapButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -114,18 +107,18 @@ public class ProfileActivity extends AppCompatActivity {
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
         allergies = (ArrayList<String>) extras.get("allergies");
-        numFriends = (int) extras.get("numFriends");
+        numFriends = (String) extras.get("numFriends");
         friends = (ArrayList<String>) extras.get("friends");
 
         //Set profile information
-        usernameText.setText("@" + username);
-        nameText.setText(name);
-        emailText.setText(email);
-        passwordText.setText(password);
-        birthyearText.setText(birthYear);
-        lifestyleText.setText(lifestyle);
-        partysizeText.setText(partySize);
-        numFriendsText.setText(String.valueOf(numFriends));
+        _usernameText.setText("@" + username);
+        _nameText.setText(name);
+        _emailText.setText(email);
+        _passwordText.setText(password);
+        _birthyearText.setText(birthYear);
+        _lifestyleText.setText(lifestyle);
+        _partysizeText.setText(partySize);
+        _numFriendsText.setText(numFriends);
         String allergyFull = "Allergies: ";
         for (int i = 0; i < allergies.size(); i++){
             if (i != allergies.size() - 1) {
@@ -134,7 +127,7 @@ public class ProfileActivity extends AppCompatActivity {
                 allergyFull = allergyFull + allergies.get(i);
             }
         }
-        allergiesText.setText(allergyFull);
+        _allergiesText.setText(allergyFull);
 
 
 
@@ -220,6 +213,8 @@ public class ProfileActivity extends AppCompatActivity {
         intent.putExtra("lifestyle", lifestyle);
         intent.putExtra("partysize", partySize);
         intent.putExtra("allergies", allergies);
+        intent.putExtra("numFriends", numFriends);
+        intent.putExtra("friends", friends);
         mContext.startActivity(intent);
     }
 }

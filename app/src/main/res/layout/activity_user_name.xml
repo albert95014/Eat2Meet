@@ -49,6 +49,7 @@
             <!-- Continue Button -->
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/usernameContinue"
+                android:background="@drawable/buttonstyleithgradient"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

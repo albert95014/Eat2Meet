@@ -28,6 +28,8 @@ public class SignupActivity extends AppCompatActivity {
     private String birthYear;
     private String partySize;
     private ArrayList<String> allergies;
+    private String numFriends;
+    private ArrayList<String> friends;
 
     @BindView(R.id.input_name) EditText _nameText;
     @BindView(R.id.input_email) EditText _emailText;
@@ -55,6 +57,8 @@ public class SignupActivity extends AppCompatActivity {
             birthYear = (String) extras.get("birthyear");
             partySize = (String) extras.get("partysize");
             allergies = (ArrayList<String>) extras.get("allergies");
+            numFriends = (String) extras.get("numFriends");
+            friends = (ArrayList<String>) extras.get("friends");
 
             _nameText.setText(name);
             _emailText.setText(email);
@@ -83,6 +87,8 @@ public class SignupActivity extends AppCompatActivity {
                 intent.putExtra("birthyear", birthYear);
                 intent.putExtra("partysize", partySize);
                 intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
                 mContext.startActivity(intent);
             }
         });

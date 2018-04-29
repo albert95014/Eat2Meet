@@ -10,15 +10,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.RadioButton;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class AllergyActivity extends AppCompatActivity {
 
-    private android.support.v7.widget.Toolbar mToolbar;
+    @BindView(R.id.my_toolbar) android.support.v7.widget.Toolbar _mToolbar;
+    @BindView(R.id.allergyContinue) Button _allergyContinue;
 
-    private Button allergyContinue;
 
     private String name;
     private String email;
@@ -28,19 +31,21 @@ public class AllergyActivity extends AppCompatActivity {
     private String birthYear;
     private String partySize;
     private ArrayList<String> allergies;
+    private String numFriends;
+    private ArrayList<String> friends;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allergy);
+        ButterKnife.bind(this);
 
-        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(mToolbar);
-        mToolbar.setTitle("Allergies");
+        setSupportActionBar(_mToolbar);
+        _mToolbar.setTitle("Allergies");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
@@ -53,12 +58,11 @@ public class AllergyActivity extends AppCompatActivity {
                 intent.putExtra("lifestyle", lifestyle);
                 intent.putExtra("partysize", partySize);
                 intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
                 mContext.startActivity(intent);
             }
         });
-
-        //Link up UI elements
-        allergyContinue = (Button) findViewById(R.id.allergyContinue);
 
         //Get Extras
         Intent receivingIntent = getIntent();
@@ -71,18 +75,20 @@ public class AllergyActivity extends AppCompatActivity {
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
         allergies = (ArrayList<String>) extras.get("allergies");
+        numFriends = (String) extras.get("numFriends");
+        friends = (ArrayList<String>) extras.get("friends");
 
         if (allergies != null) {
             for (String allergy : allergies) {
                 String id = String.format("R.id.checkbox%s", allergy.replace(" ", ""));
-                CheckBox glutenFree = (CheckBox) findViewById(Integer.parseInt(id));
-                glutenFree.setChecked(true);
+                CheckBox allergicTo = (CheckBox) findViewById(Integer.parseInt(id));
+                allergicTo.setChecked(true);
             }
         } else {
             allergies = new ArrayList<>();
         }
 
-        allergyContinue.setOnClickListener(new View.OnClickListener() {
+        _allergyContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context mContext = getBaseContext();
@@ -95,8 +101,9 @@ public class AllergyActivity extends AppCompatActivity {
                 intent.putExtra("partysize", partySize);
                 intent.putExtra("lifestyle", lifestyle);
                 intent.putExtra("allergies", allergies);
+                intent.putExtra("numFriends", numFriends);
+                intent.putExtra("friends", friends);
                 mContext.startActivity(intent);
-
             }
         });
 

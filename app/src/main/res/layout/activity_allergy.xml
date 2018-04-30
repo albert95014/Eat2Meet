@@ -31,6 +31,13 @@
             android:paddingRight="24dp"
             android:paddingTop="56dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Select Allergies"
+                android:textSize="18dp" />
+
             <CheckBox
                 android:id="@+id/checkboxDairy"
                 android:layout_width="match_parent"
@@ -90,6 +97,14 @@
             <!--android:text="none" />-->
 
             <CheckBox
+                android:id="@+id/checkboxEggs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/startblue"
+                android:onClick="onCheckboxClicked"
+                android:text="eggs" />
+
+            <CheckBox
                 android:id="@+id/checkboxOthers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,13 +114,6 @@
 
 
             <!-- Continue Button -->
-            <CheckBox
-                android:id="@+id/checkboxEggs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/startblue"
-                android:onClick="onCheckboxClicked"
-                android:text="eggs" />
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/allergyContinue"

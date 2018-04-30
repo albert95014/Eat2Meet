@@ -57,10 +57,10 @@ class CommentViewHolder extends RecyclerView.ViewHolder {
 
     public CommentViewHolder(View itemView) {
         super(itemView);
-//        mCommentBubbleLayout = itemView.findViewById(R.id.comment_cell_layout);
-//        mUsernameTextView = mCommentBubbleLayout.findViewById(R.id.username_text_view);
-//        mDateTextView = mCommentBubbleLayout.findViewById(R.id.date_text_view);
-//        mCommentTextView = mCommentBubbleLayout.findViewById(R.id.comment_text_view);
+        mCommentBubbleLayout = itemView.findViewById(R.id.comment_cell_layout);
+        mUsernameTextView = mCommentBubbleLayout.findViewById(R.id.username_text_view);
+        mDateTextView = mCommentBubbleLayout.findViewById(R.id.date_text_view);
+        mCommentTextView = mCommentBubbleLayout.findViewById(R.id.comment_text_view);
     }
 
     void bind(Comment comment) {

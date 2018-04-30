@@ -40,8 +40,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-//        DatabaseReference ref = database.getReference();
-
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -99,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                                     String userPassword = _passwordText.getText().toString();
                                     if (userPassword.equals(dataSnapshot.child("password").getValue(String.class))) {
                                         // email and password match
+                                        String yayemail = _emailText.getText().toString().replace(".", ",");
                                         String yayusername = dataSnapshot.child("username").getValue(String.class);
                                         String yayname = dataSnapshot.child("name").getValue(String.class);
                                         String yaypassword = dataSnapshot.child("password").getValue(String.class);
@@ -107,8 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                                         String yaypartysize = dataSnapshot.child("partySize").getValue(String.class);
 //                                        ArrayList yayallergies = dataSnapshot.child("allergies").getValue(ArrayList.class);
                                         Toast.makeText(LoginActivity.this, "Username: " + yayusername + "\nName: " + yayname + "\nPassword: " + yaypassword + "\nBirth Year: " + yaybirthYear + "\nLifestyle: " + yaylifestyle + "\nParty Size: " + yaypartysize, Toast.LENGTH_LONG).show();
+                                        onLoginSuccess(yayname, yayemail, yaypassword, yayusername,
+                                                yaylifestyle, yaypartysize, yaybirthYear);
                                     } else {
                                         Toast.makeText(LoginActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
+                                        onLoginFailed();
                                     }
                                     // use "username" already exists
                                     // Let the user know he needs to pick another username.
@@ -117,7 +119,8 @@ public class LoginActivity extends AppCompatActivity {
                                     // User does not exist. NOW call createUserWithEmailAndPassword
 //                                    mAuth.createUserWithPassword(...);
                                     // Your previous code here.
-                                    Toast.makeText(LoginActivity.this, "Incorrect email?", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Email is incorrect", Toast.LENGTH_SHORT).show();
+                                    onLoginFailed();
                                 }
                             }
 
@@ -149,14 +152,28 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
+    public void onLoginSuccess(String name, String email, String password, String username,
+                               String lifestyle, String partySize, String birthYear) {
         _loginButton.setEnabled(true);
+        Context mContext = getBaseContext();
+        Intent intent = new Intent(mContext, ProfileActivity.class);
+        intent.putExtra("name", name);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        intent.putExtra("username", username);
+        intent.putExtra("phonenumber", "4086070928");
+        intent.putExtra("lifestyle", lifestyle);
+        intent.putExtra("birthyear", birthYear);
+        intent.putExtra("partysize", partySize);
+        intent.putExtra("allergies", new ArrayList<String>());
+        intent.putExtra("numFriends", "4");
+        intent.putExtra("friends", new ArrayList<String>());
+        mContext.startActivity(intent);
         finish();
     }
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
         _loginButton.setEnabled(true);
     }
 

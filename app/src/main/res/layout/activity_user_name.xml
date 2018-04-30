@@ -43,7 +43,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Create a Username"
-                    android:singleLine="false" />
+                    android:singleLine="false"
+                    android:textColorLink="@color/startblue" />
             </android.support.design.widget.TextInputLayout>
 
             <!--  Phone Number Label -->
@@ -55,11 +56,12 @@
 
                 <EditText
                     android:id="@+id/phoneEditText"
-                    android:inputType="phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone Number"
-                    android:singleLine="false" />
+                    android:inputType="phone"
+                    android:singleLine="false"
+                    android:textColorLink="@color/startblue" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Continue Button -->

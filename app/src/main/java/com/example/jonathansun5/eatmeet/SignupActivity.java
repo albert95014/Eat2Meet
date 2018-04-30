@@ -44,8 +44,6 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
 
-
-
         Intent receivingIntent = getIntent();
         Bundle extras = receivingIntent.getExtras();
 
@@ -66,11 +64,6 @@ public class SignupActivity extends AppCompatActivity {
             _emailText.setText(email);
             _passwordText.setText(password);
         }
-
-
-
-
-
 
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,12 +26,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
+
             <EditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:hint="Email" />
+                android:selectAllOnFocus="false"
+                android:singleLine="false"
+                android:textColorLink="@color/startblue" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -40,12 +44,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
+
             <EditText
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Password"
                 android:inputType="textPassword"
-                android:hint="Password"/>
+                android:textColorHint="@color/cardview_dark_background"
+                android:textColorLink="@color/startblue" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton

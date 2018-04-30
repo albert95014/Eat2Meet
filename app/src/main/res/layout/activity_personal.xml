@@ -24,19 +24,19 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="56dp"
+            android:orientation="vertical"
             android:paddingLeft="24dp"
-            android:paddingRight="24dp">
+            android:paddingRight="24dp"
+            android:paddingTop="56dp">
 
             <!--  Birth Year Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
 
                 <EditText
                     android:id="@+id/birthYear"
@@ -52,8 +52,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
 
                 <EditText
                     android:id="@+id/partySize"
@@ -67,18 +67,29 @@
             </android.support.design.widget.TextInputLayout>
 
             <!-- Radio Food Personality Label -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="Lifestyle"
+                android:textSize="18dp" />
+
+
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:checkedButton="@+id/radioNormal">
+                android:checkedButton="@+id/radioNormal"
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/radioVegan"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Vegan" />
@@ -86,7 +97,8 @@
                 <RadioButton
                     android:id="@+id/radioVegetarian"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Vegetarian" />
@@ -94,7 +106,8 @@
                 <RadioButton
                     android:id="@+id/radioGlutenFree"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Gluten Free" />
@@ -102,7 +115,8 @@
                 <RadioButton
                     android:id="@+id/radioCarnivore"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Carnivore" />
@@ -110,7 +124,8 @@
                 <RadioButton
                     android:id="@+id/radioPescatarian"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="Pescatarian" />
@@ -118,7 +133,8 @@
                 <RadioButton
                     android:id="@+id/radioNoRestrictions"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:buttonTint="@color/startblue"
                     android:onClick="onRadioButtonClicked"
                     android:text="No Restrictions" />
@@ -128,11 +144,11 @@
             <!-- Continue Button -->
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/personalContinue"
-                android:background="@drawable/buttonstyleithgradient"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/buttonstyleithgradient"
                 android:padding="12dp"
                 android:text="Continue" />
 

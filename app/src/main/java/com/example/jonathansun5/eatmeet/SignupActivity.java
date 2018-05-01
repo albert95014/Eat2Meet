@@ -69,23 +69,6 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signup();
-                String name = _nameText.getText().toString();
-                String email = _emailText.getText().toString();
-                String password = _passwordText.getText().toString();
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, UserNameActivity.class);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("username", username);
-                intent.putExtra("phonenumber", phoneNumber);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                intent.putExtra("numFriends", numFriends);
-                intent.putExtra("friends", friends);
-                mContext.startActivity(intent);
             }
         });
 
@@ -118,8 +101,6 @@ public class SignupActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        // TODO: Implement your own signup logic here.
-
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
@@ -130,6 +111,23 @@ public class SignupActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
                 }, 3000);
+
+        // TODO: Implement your own signup logic here.
+        Context mContext = getBaseContext();
+        Intent intent = new Intent(mContext, UserNameActivity.class);
+        intent.putExtra("name", name);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        intent.putExtra("username", username);
+        intent.putExtra("phonenumber", phoneNumber);
+        intent.putExtra("lifestyle", lifestyle);
+        intent.putExtra("birthyear", birthYear);
+        intent.putExtra("partysize", partySize);
+        intent.putExtra("allergies", allergies);
+        intent.putExtra("numFriends", numFriends);
+        intent.putExtra("friends", friends);
+        mContext.startActivity(intent);
+
     }
 
 
@@ -141,8 +139,9 @@ public class SignupActivity extends AppCompatActivity {
 
     public void onSignupFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
-        _signupButton.setEnabled(true);
+        Context mContext = getBaseContext();
+        Intent intent = new Intent(mContext, SignupActivity.class);
+        mContext.startActivity(intent);
     }
 
     public boolean validate() {

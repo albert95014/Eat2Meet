@@ -124,8 +124,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
         _friendsText.setText(friendsTextGood);
 
-
-
         _toMapButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -143,7 +141,11 @@ public class ProfileActivity extends AppCompatActivity {
                 userEmail.child("allergies").setValue(allergies);
                 userEmail.child("numFriends").setValue(numFriends);
                 userEmail.child("friends").setValue(friends);
-                startIntent(getBaseContext(), SetLocationActivity.class);
+
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext, SetLocationActivity.class);
+                intent.putExtra("username", username);
+                mContext.startActivity(intent);
             }
         });
 

@@ -1,5 +1,6 @@
 package com.example.jonathansun5.eatmeet;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 public class SearchingMapActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private int status = 0;
+    String username;
     CountDownTimer mCountDownTimer;
 
     @Override
@@ -26,6 +28,9 @@ public class SearchingMapActivity extends AppCompatActivity {
         mCountDownTimer = new MyCountDownTimer(10000,2000);
         mCountDownTimer.start();
 
+        Intent receivingIntent = getIntent();
+        Bundle extras = receivingIntent.getExtras();
+        username = (String) extras.get("username");
 
     }
     public class MyCountDownTimer extends CountDownTimer {
@@ -36,7 +41,7 @@ public class SearchingMapActivity extends AppCompatActivity {
 
         @Override
         public void onTick(long millisUntilFinished) {
-            Toast.makeText(getApplicationContext(), "start searching.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Start searching...", Toast.LENGTH_SHORT).show();
 
             int progress = (int) (millisUntilFinished/100);
             progressBar.setProgress(progress);
@@ -44,10 +49,13 @@ public class SearchingMapActivity extends AppCompatActivity {
 
         @Override
         public void onFinish() {
-            Toast.makeText(getApplicationContext(), "searching complete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Searching complete.", Toast.LENGTH_SHORT).show();
             progressBar.setProgress(0);
             progressBar.setVisibility(View.INVISIBLE);
-            Intent intent = new Intent(SearchingMapActivity.this, MaptoGroupActivity.class);
+            Context mContext = getBaseContext();
+            Intent intent = new Intent(mContext,  MaptoGroupActivity.class);
+            intent.putExtra("username", username);
+            mContext.startActivity(intent);
             startActivity(intent);
 
         }

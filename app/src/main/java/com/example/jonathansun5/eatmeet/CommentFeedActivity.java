@@ -31,7 +31,7 @@ public class CommentFeedActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private ArrayList<Comment> mComments = new ArrayList<Comment>();
     private String mUsername;
-    private DatabaseReference mLandmarkRef;
+    private DatabaseReference mMessageRef;
 
     // UI elements
     EditText commentInputBox;
@@ -48,15 +48,14 @@ public class CommentFeedActivity extends AppCompatActivity {
         Intent goToCommentActivityIntent = getIntent();
         Bundle intentExtras = goToCommentActivityIntent.getExtras();
 
-        String landmarkName = "No Name Bear";
+        String chatName = "Messaging Board";
         mUsername = "160 student";
         if(intentExtras!=null) {
-            landmarkName =(String) intentExtras.get("landmark");
             mUsername =(String) intentExtras.get("username");
         }
 
         // sets the app bar's title
-        this.setTitle(landmarkName + ": Posts");
+        this.setTitle(chatName);
 
         // hook up UI elements
         layout = (RelativeLayout) findViewById(R.id.comment_layout);
@@ -65,15 +64,15 @@ public class CommentFeedActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mToolbar);
-        mToolbar.setTitle(landmarkName + ": Posts");
+        mToolbar.setTitle(chatName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(v.getContext(), LandmarkFeedActivity.class);
-//                intent.putExtra("username", mUsername);
-//                v.getContext().startActivity(intent);
+                Intent intent = new Intent(v.getContext(), SetLocationActivity.class);
+                intent.putExtra("username", mUsername);
+                v.getContext().startActivity(intent);
             }
         });
 
@@ -86,11 +85,12 @@ public class CommentFeedActivity extends AppCompatActivity {
 
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference landmarksRef = database.getReference();
-        mLandmarkRef = landmarksRef.child(landmarkName);
+
+        DatabaseReference messagesRef = database.getReference("messageboards");
+        mMessageRef = messagesRef.child(chatName);
 
         // Attach a listener to read the data at our posts reference
-        mLandmarkRef.addChildEventListener(new ChildEventListener() {
+        mMessageRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
                 pullDatabaseComments(snapshot);
@@ -157,7 +157,7 @@ public class CommentFeedActivity extends AppCompatActivity {
 
     private void postNewComment(String commentText) {
         Comment newComment = new Comment(commentText, mUsername, new Date().getTime());
-        DatabaseReference comment = mLandmarkRef.push();
+        DatabaseReference comment = mMessageRef.push();
         comment.setValue(newComment);
     }
 

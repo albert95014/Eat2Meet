@@ -1,6 +1,7 @@
 package com.example.jonathansun5.eatmeet;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ public class AnotherLocationActivity extends AppCompatActivity {
     ProgressBar progressBar;
     CountDownTimer mCountDownTimer;
     private int status = 0;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,10 @@ public class AnotherLocationActivity extends AppCompatActivity {
         progressBar.setProgress(status);
         mCountDownTimer = new AnotherLocationActivity.MyCountDownTimer(6000,2000);
         mCountDownTimer.start();
+
+        Intent receivingIntent = getIntent();
+        Bundle extras = receivingIntent.getExtras();
+        username = (String) extras.get("username");
 
     }
 
@@ -33,7 +39,7 @@ public class AnotherLocationActivity extends AppCompatActivity {
 
         @Override
         public void onTick(long millisUntilFinished) {
-            Toast.makeText(getApplicationContext(), "start searching.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Start searching...", Toast.LENGTH_SHORT).show();
 
             int progress = (int) (millisUntilFinished/100);
             progressBar.setProgress(progress);
@@ -41,14 +47,13 @@ public class AnotherLocationActivity extends AppCompatActivity {
 
         @Override
         public void onFinish() {
-            Toast.makeText(getApplicationContext(), "searching complete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Searching complete.", Toast.LENGTH_SHORT).show();
             progressBar.setProgress(0);
             progressBar.setVisibility(View.INVISIBLE);
-            Intent intent = new Intent(AnotherLocationActivity.this, GroupNullActivity.class);
-            startActivity(intent);
-
-
-
+            Context mContext = getBaseContext();
+            Intent intent = new Intent(mContext,  GroupNullActivity.class);
+            intent.putExtra("username", username);
+            mContext.startActivity(intent);
 
         }
 

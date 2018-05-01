@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true">
     <LinearLayout
         android:orientation="vertical"
@@ -10,25 +11,27 @@
         android:paddingTop="56dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:titleTextColor="@color/startblue"
+            app:title="temp title"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
+            android:textAllCaps="false"
             android:textSize="25sp"
             android:text="No members found! Try again later."
             android:textAlignment="center"
             android:singleLine="false" />
-
-        <Button
-            android:id="@+id/back"
-            android:background="@drawable/buttonstyleithgradient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="back"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="35dp"
-            android:layout_alignParentBottom="true" />
 
     </LinearLayout>
 

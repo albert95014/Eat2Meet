@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                                         String yaylifestyle = dataSnapshot.child("lifestyle").getValue(String.class);
                                         String yaypartysize = dataSnapshot.child("partySize").getValue(String.class);
 //                                        ArrayList yayallergies = dataSnapshot.child("allergies").getValue(ArrayList.class);
-                                        Toast.makeText(LoginActivity.this, "Username: " + yayusername + "\nName: " + yayname + "\nPassword: " + yaypassword + "\nBirth Year: " + yaybirthYear + "\nLifestyle: " + yaylifestyle + "\nParty Size: " + yaypartysize, Toast.LENGTH_LONG).show();
+                                        //Toast.makeText(LoginActivity.this, "Username: " + yayusername + "\nName: " + yayname + "\nPassword: " + yaypassword + "\nBirth Year: " + yaybirthYear + "\nLifestyle: " + yaylifestyle + "\nParty Size: " + yaypartysize, Toast.LENGTH_LONG).show();
                                         onLoginSuccess(yayname, yayemail, yaypassword, yayusername,
                                                 yaylifestyle, yaypartysize, yaybirthYear);
                                     } else {
@@ -174,7 +174,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Context mContext = getBaseContext();
+        Intent intent = new Intent(mContext, LoginActivity.class);
+        finish();
         _loginButton.setEnabled(true);
+        mContext.startActivity(intent);
     }
 
     public boolean validate() {
@@ -184,14 +188,14 @@ public class LoginActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("enter a valid email address");
+            _emailText.setError("Please enter a valid email address");
             valid = false;
         } else {
             _emailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+            _passwordText.setError("Between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
             _passwordText.setError(null);

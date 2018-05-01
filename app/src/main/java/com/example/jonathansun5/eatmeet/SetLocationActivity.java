@@ -25,7 +25,7 @@ public class SetLocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setlocation);
-        //imageButton = (ImageButton)findViewById(R.id.go);
+        imageButton = (ImageButton)findViewById(R.id.go);
         editText = (EditText)findViewById(R.id.anotheraddress);
         button = (Button)findViewById(R.id.currentlocation);
         String address = editText.getText().toString();
@@ -47,14 +47,14 @@ public class SetLocationActivity extends AppCompatActivity {
         Bundle extras = receivingIntent.getExtras();
         username = (String) extras.get("username");
 
-//        imageButton.setOnClickListener(new View.OnClickListener(){
-//            public void onClick(View v) {
-//                Context mContext = getBaseContext();
-//                Intent intent = new Intent(mContext,  AnotherLocationActivity.class);
-//                intent.putExtra("username", username);
-//                mContext.startActivity(intent);
-//            }
-//        });
+        imageButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                Intent intent = new Intent(mContext,  AnotherLocationActivity.class);
+                intent.putExtra("username", username);
+                mContext.startActivity(intent);
+            }
+        });
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Context mContext = getBaseContext();

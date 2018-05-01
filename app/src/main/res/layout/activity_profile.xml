@@ -267,7 +267,6 @@
 
         <Button
             android:id="@+id/toMap"
-            android:textColor="#fff"
             android:background="@drawable/buttonstyleithgradient"
             android:layout_marginTop="35dp"
             android:layout_marginBottom="35dp"

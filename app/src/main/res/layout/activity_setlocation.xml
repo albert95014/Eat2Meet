@@ -20,6 +20,16 @@
             android:layout_marginTop="10dp"
             android:hint="Enter another location" />
 
+        <ImageButton
+            android:id="@+id/go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@color/cardview_shadow_end_color"
+            app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+
 
     </LinearLayout>
 

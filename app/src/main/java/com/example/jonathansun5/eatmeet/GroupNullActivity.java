@@ -13,18 +13,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class GroupNullActivity extends AppCompatActivity {
 
     @BindView(R.id.my_toolbar) android.support.v7.widget.Toolbar _mToolbar;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groupnull);
+        ButterKnife.bind(this);
+
+        Intent receivingIntent = getIntent();
+        Bundle extras = receivingIntent.getExtras();
+        username = (String) extras.get("username");
 
         setSupportActionBar(_mToolbar);
-        _mToolbar.setTitle("Matched Group");
+        _mToolbar.setTitle("");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -33,6 +40,7 @@ public class GroupNullActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context mContext = getBaseContext();
                 Intent intent = new Intent(mContext, SetLocationActivity.class);
+                intent.putExtra("username", username);
                 mContext.startActivity(intent);
             }
         });

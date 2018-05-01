@@ -116,15 +116,6 @@
                 android:onClick="onCheckboxClicked"
                 android:text="eggs" />
 
-            <CheckBox
-                android:id="@+id/checkboxOthers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/startblue"
-                android:gravity="top"
-                android:onClick="onCheckboxClicked"
-                android:text="others" />
-
 
             <!-- Continue Button -->
 

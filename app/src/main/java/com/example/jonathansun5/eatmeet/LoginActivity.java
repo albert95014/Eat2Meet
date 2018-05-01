@@ -104,10 +104,11 @@ public class LoginActivity extends AppCompatActivity {
                                         String yaybirthYear = dataSnapshot.child("birthYear").getValue(String.class);
                                         String yaylifestyle = dataSnapshot.child("lifestyle").getValue(String.class);
                                         String yaypartysize = dataSnapshot.child("partySize").getValue(String.class);
+                                        String yayphonenumber = dataSnapshot.child("phoneNumber").getValue(String.class);
 //                                        ArrayList yayallergies = dataSnapshot.child("allergies").getValue(ArrayList.class);
                                         //Toast.makeText(LoginActivity.this, "Username: " + yayusername + "\nName: " + yayname + "\nPassword: " + yaypassword + "\nBirth Year: " + yaybirthYear + "\nLifestyle: " + yaylifestyle + "\nParty Size: " + yaypartysize, Toast.LENGTH_LONG).show();
                                         onLoginSuccess(yayname, yayemail, yaypassword, yayusername,
-                                                yaylifestyle, yaypartysize, yaybirthYear);
+                                                yaylifestyle, yaypartysize, yaybirthYear, yayphonenumber);
                                     } else {
                                         Toast.makeText(LoginActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
                                         onLoginFailed();
@@ -153,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess(String name, String email, String password, String username,
-                               String lifestyle, String partySize, String birthYear) {
+                               String lifestyle, String partySize, String birthYear, String phonenumber) {
         _loginButton.setEnabled(true);
         Context mContext = getBaseContext();
         Intent intent = new Intent(mContext, ProfileActivity.class);
@@ -161,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("email", email);
         intent.putExtra("password", password);
         intent.putExtra("username", username);
-        intent.putExtra("phonenumber", "4086070928");
+        intent.putExtra("phonenumber", phonenumber);
         intent.putExtra("lifestyle", lifestyle);
         intent.putExtra("birthyear", birthYear);
         intent.putExtra("partysize", partySize);

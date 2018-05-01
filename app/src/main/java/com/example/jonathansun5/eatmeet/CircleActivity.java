@@ -102,13 +102,20 @@ public class CircleActivity extends AppCompatActivity {
                                 _circleEditText.setText("");
                                 Toast.makeText(CircleActivity.this, "User is already a Friend", Toast.LENGTH_SHORT).show();
                             } else {
-                                Integer numberOfFriends = Integer.parseInt(numFriends);
-                                numberOfFriends += 1;
-                                numFriends = String.valueOf(numberOfFriends);
-                                friends.add(tempFriend);
-                                _currentFriends.setText(listToString(friends));
-                                _circleEditText.setText("");
-                                Toast.makeText(CircleActivity.this, "User Added!!", Toast.LENGTH_SHORT).show();
+                                if (tempFriend.equals(email)){
+                                    Toast.makeText(CircleActivity.this, "Sorry, can't add yourself", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Integer numberOfFriends = Integer.parseInt(numFriends);
+                                    numberOfFriends += 1;
+                                    numFriends = String.valueOf(numberOfFriends);
+                                    friends.add(tempFriend);
+                                    _currentFriends.setText(listToString(friends));
+                                    _circleEditText.setText("");
+                                    Toast.makeText(CircleActivity.this, "User Added!!", Toast.LENGTH_SHORT).show();
+
+                                }
+
+
                             }
                         }
                         else{

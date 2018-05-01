@@ -91,10 +91,10 @@ public class AllergyActivity extends AppCompatActivity {
                     Log.e("Auto populate: ", allergy);
                     ((CheckBox) findViewById(R.id.checkboxGluten)).setChecked(true);
                 }
-                if (allergy.equals("Others")) {
-                    Log.e("Auto populate: ", allergy);
-                    ((CheckBox) findViewById(R.id.checkboxOthers)).setChecked(true);
-                }
+                //if (allergy.equals("Others")) {
+                //  Log.e("Auto populate: ", allergy);
+                //((CheckBox) findViewById(R.id.checkboxOthers)).setChecked(true);
+                // }
 //                String id = String.format("R.id.checkbox%s", allergy.replace(" ", ""));
 //                CheckBox allergicTo = (CheckBox) findViewById(Integer.parseInt(id));
 //                allergicTo.setChecked(true);
@@ -223,15 +223,7 @@ public class AllergyActivity extends AppCompatActivity {
                     allergies.remove("Gluten");
                 }
                 break;
-            case R.id.checkboxOthers:
-                if (checked && !allergies.contains("Others")) {
-                    Log.e("adding to allergies: ", "Others");
-                    allergies.add("Others");
-                } else {
-                    Log.e("remove from allergies: ", "Others");
-                    allergies.remove("Others");
-                }
-                break;
+
         }
     }
 }

@@ -8,6 +8,11 @@ __Eat2Meet__ is an Android Application designed to help you find friends in citi
 
 Above is the __Eat2Meet__ _login page_. Notice that the user interface conforms to _Android UI application conventions_ so that users can enjoy _effective, streamlined experiences_.
 
+Here is a demo video of the app:
+
+<!-- [![Demo Video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://youtu.be/Nu7UVhpADLI) -->
+
+
 ## Motivation
 
 We have gone through quite a few iterations of our design, including a major conceptual pivot. We initially developed an application, __PeopleMates__, which would help customers consolidate to-go orders but we found that the user group we decided on was too broad and the application lacked an element of social impact. We settled on __Eat2Meet__, an app that provides a unique and supportive space for people new to a neighborhood, city, etc.
@@ -44,11 +49,11 @@ Once you have done so, you can _clone or download this repo_ and open it in __An
 
 ### Building the App
 
-Build the project by clicking __Build > Make Project__
+Build the project by clicking __Build > Make Project__.
 
 ![](README-images/BuildMakeProject.png)
 
-After a short while, you should see a notification that the build finished
+After a short while, you should see a notification that the build finished.
 
 ![](README-images/BuildMakeProjectSuccess.png)
 
@@ -56,7 +61,7 @@ After a short while, you should see a notification that the build finished
 
 If you have an __Android device__, you can connect your device to __Android Studio__ and run the app on your device. If not, you can __run the app in an emulator__.
 
-To run the app, click __Run > Run App__
+To run the app, click __Run > Run App__.
 
 ![](README-images/RunApp.png)
 

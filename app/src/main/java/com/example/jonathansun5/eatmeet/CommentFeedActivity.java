@@ -70,7 +70,7 @@ public class CommentFeedActivity extends AppCompatActivity {
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), SetLocationActivity.class);
+                Intent intent = new Intent(v.getContext(), MaptoGroupActivity.class);
                 intent.putExtra("username", mUsername);
                 v.getContext().startActivity(intent);
             }

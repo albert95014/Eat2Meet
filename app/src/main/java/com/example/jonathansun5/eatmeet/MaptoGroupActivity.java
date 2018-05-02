@@ -31,7 +31,7 @@ public class MaptoGroupActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setSupportActionBar(_mToolbar);
-        _mToolbar.setTitle("User Profile");
+        _mToolbar.setTitle("Matched Group");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

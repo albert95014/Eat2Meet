@@ -6,6 +6,7 @@ package com.example.jonathansun5.eatmeet;
         import android.graphics.drawable.ColorDrawable;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
@@ -22,6 +23,11 @@ package com.example.jonathansun5.eatmeet;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.database.ValueEventListener;
+
+        import com.getbase.floatingactionbutton.FloatingActionButton;
+        import com.getbase.floatingactionbutton.FloatingActionsMenu;
+        import android.view.View.OnClickListener;
+
 
         import org.w3c.dom.Text;
 
@@ -42,6 +48,25 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.friendsEditText) TextView _friendsText;
     @BindView(R.id.numFriendsText) TextView _numFriendsText;
     @BindView(R.id.toMap) Button _toMapButton;
+
+
+
+
+
+
+    @BindView(R.id.action_a) FloatingActionButton _menuEditNameEmailPassword;
+    @BindView(R.id.action_b) FloatingActionButton _menuEditUsernamePhoneNumber;
+    @BindView(R.id.action_c) FloatingActionButton _menuEditAgePartySizeLifeStyle;
+    @BindView(R.id.action_d) FloatingActionButton _menuEditAllergies;
+    @BindView(R.id.action_e) FloatingActionButton _menuEditFriends;
+
+
+
+
+
+
+
+
 
     private String name;
     private String email;
@@ -89,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity {
         _usernameText.setText("@" + username);
         _phonenumberText.setText(phoneNumber);
         _nameText.setText(name);
-        _emailText.setText(email);
+        _emailText.setText(email.replace(",", "."));
         _passwordText.setText(censor + last3Characters);
         _birthyearText.setText(birthYear);
         _lifestyleText.setText(lifestyle);
@@ -109,11 +134,15 @@ public class ProfileActivity extends AppCompatActivity {
             _allergiesText.setText(allergyFull);
         }
         String friendsTextGood = "Friends: ";
+        Log.e("number of friends: ", String.valueOf(friends.size()));
         if (friends.size() == 0) {
-            _friendsText.setText(friendsTextGood + "None");
+            Log.e("num friends", "0 friends");
+            friendsTextGood += "None";
         } else if (friends.size() == 1) {
-            friendsTextGood = friends.get(0).replace(",", ".");
+            Log.e("num friends", "1 friend");
+            friendsTextGood += friends.get(0).replace(",", ".");
         } else {
+            Log.e("num friends", "multiple friends");
             for (int i = 0; i < friends.size(); i++){
                 if (i == friends.size() - 1) {
                     friendsTextGood += friends.get(i).replace(",", ".");
@@ -173,6 +202,55 @@ public class ProfileActivity extends AppCompatActivity {
                 mContext.startActivity(intent);
             }
         });
+
+
+
+
+
+        _menuEditNameEmailPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                startIntent(mContext, SignupActivity.class);
+            }
+        });
+
+        _menuEditUsernamePhoneNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                startIntent(mContext, UserNameActivity.class);
+            }
+        });
+
+        _menuEditAgePartySizeLifeStyle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                startIntent(mContext, PersonalActivity.class);
+            }
+        });
+
+        _menuEditAllergies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                startIntent(mContext, AllergyActivity.class);
+            }
+        });
+
+        _menuEditFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context mContext = getBaseContext();
+                startIntent(mContext, CircleActivity.class);
+            }
+        });
+
+
+
+
+
 
 //        _saveProfileButton.setOnClickListener(new View.OnClickListener() {
 //            @Override

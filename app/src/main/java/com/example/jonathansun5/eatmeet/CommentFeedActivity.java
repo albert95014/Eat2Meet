@@ -58,11 +58,11 @@ public class CommentFeedActivity extends AppCompatActivity {
         this.setTitle(chatName);
 
         // hook up UI elements
-        layout = (RelativeLayout) findViewById(R.id.comment_layout);
-        commentInputBox = (EditText) layout.findViewById(R.id.comment_input_edit_text);
-        sendButton = (Button) layout.findViewById(R.id.send_button);
+        layout = findViewById(R.id.comment_layout);
+        commentInputBox = layout.findViewById(R.id.comment_input_edit_text);
+        sendButton = layout.findViewById(R.id.send_button);
 
-        mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        mToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(mToolbar);
         mToolbar.setTitle(chatName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -76,7 +76,7 @@ public class CommentFeedActivity extends AppCompatActivity {
             }
         });
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.comment_recycler);
+        mRecyclerView = findViewById(R.id.comment_recycler);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -119,7 +119,7 @@ public class CommentFeedActivity extends AppCompatActivity {
     }
 
     private void pullDatabaseComments(DataSnapshot data) {
-        mComments.add((Comment) data.getValue(Comment.class));
+        mComments.add(data.getValue(Comment.class));
         setAdapterAndUpdateData();
     }
 

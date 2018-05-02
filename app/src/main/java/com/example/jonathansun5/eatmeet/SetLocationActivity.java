@@ -25,12 +25,12 @@ public class SetLocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setlocation);
-        imageButton = (ImageButton)findViewById(R.id.go);
-        editText = (EditText)findViewById(R.id.anotheraddress);
-        button = (Button)findViewById(R.id.currentlocation);
+        imageButton = findViewById(R.id.go);
+        editText = findViewById(R.id.anotheraddress);
+        button = findViewById(R.id.currentlocation);
         String address = editText.getText().toString();
         Geocoder gc = new Geocoder(this);
-        if(gc.isPresent()) {
+        if(Geocoder.isPresent()) {
             try {
                 List<Address> list = gc.getFromLocationName(address,1);
             } catch (IOException e) {

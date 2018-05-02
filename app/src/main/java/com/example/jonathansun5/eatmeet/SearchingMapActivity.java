@@ -31,7 +31,7 @@ public class SearchingMapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_searchingmap);
         ButterKnife.bind(this);
 
-        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
         progressBar.setProgress(status);
         mCountDownTimer = new MyCountDownTimer(10000,2000);
         mCountDownTimer.start();

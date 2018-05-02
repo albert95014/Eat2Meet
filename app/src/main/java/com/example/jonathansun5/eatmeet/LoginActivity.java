@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -100,11 +101,21 @@ public class LoginActivity extends AppCompatActivity {
                                         String yaylifestyle = dataSnapshot.child("lifestyle").getValue(String.class);
                                         String yaypartysize = dataSnapshot.child("partySize").getValue(String.class);
                                         String yayphonenumber = dataSnapshot.child("phoneNumber").getValue(String.class);
-//                                        ArrayList yayallergies = dataSnapshot.child("allergies").getValue(ArrayList.class);
-                                        //Toast.makeText(LoginActivity.this, "Username: " + yayusername + "\nName: " + yayname + "\nPassword: " + yaypassword + "\nBirth Year: " + yaybirthYear + "\nLifestyle: " + yaylifestyle + "\nParty Size: " + yaypartysize, Toast.LENGTH_LONG).show();
+                                        String yaynumFriends = dataSnapshot.child("numFriends").getValue(String.class);
+
+                                        ArrayList<String> yayallergies = new ArrayList<String>();
+                                        GenericTypeIndicator<ArrayList<String>> t = new GenericTypeIndicator<ArrayList<String>>() {};
+                                        yayallergies = dataSnapshot.child("allergies").getValue(t);
+
+                                        ArrayList<String> yayFriends = new ArrayList<String>();
+                                        GenericTypeIndicator<ArrayList<String>> s = new GenericTypeIndicator<ArrayList<String>>() {};
+                                        yayFriends = dataSnapshot.child("friends").getValue(s);
+                                        progressDialog.dismiss();
+
                                         onLoginSuccess(yayname, yayemail, yaypassword, yayusername,
-                                                yaylifestyle, yaypartysize, yaybirthYear, yayphonenumber);
+                                                yaylifestyle, yaypartysize, yaybirthYear, yayphonenumber, yayallergies, yaynumFriends, yayFriends);
                                     } else {
+                                        progressDialog.dismiss();
                                         Toast.makeText(LoginActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
                                         onLoginFailed();
                                     }
@@ -115,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // User does not exist. NOW call createUserWithEmailAndPassword
 //                                    mAuth.createUserWithPassword(...);
                                     // Your previous code here.
+                                    progressDialog.dismiss();
                                     Toast.makeText(LoginActivity.this, "Email is incorrect", Toast.LENGTH_SHORT).show();
                                     onLoginFailed();
                                 }
@@ -149,7 +161,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess(String name, String email, String password, String username,
-                               String lifestyle, String partySize, String birthYear, String phonenumber) {
+                               String lifestyle, String partySize, String birthYear,
+                               String phonenumber, ArrayList<String> allergies, String numFriends, ArrayList<String> friends) {
         _loginButton.setEnabled(true);
         Context mContext = getBaseContext();
         Intent intent = new Intent(mContext, ProfileActivity.class);
@@ -161,9 +174,9 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("lifestyle", lifestyle);
         intent.putExtra("birthyear", birthYear);
         intent.putExtra("partysize", partySize);
-        intent.putExtra("allergies", new ArrayList<String>());
-        intent.putExtra("numFriends", "4");
-        intent.putExtra("friends", new ArrayList<String>());
+        intent.putExtra("allergies", allergies);
+        intent.putExtra("numFriends", numFriends);
+        intent.putExtra("friends", friends);
         mContext.startActivity(intent);
         finish();
     }

@@ -24,7 +24,7 @@ public class MaptoGroupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maptogroup);
-        button = (Button)findViewById(R.id.joingroup);
+        button = findViewById(R.id.joingroup);
         Intent receivingIntent = getIntent();
         Bundle extras = receivingIntent.getExtras();
         username = (String) extras.get("username");

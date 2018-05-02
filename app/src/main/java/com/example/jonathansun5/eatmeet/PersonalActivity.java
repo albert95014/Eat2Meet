@@ -66,32 +66,32 @@ public class PersonalActivity extends AppCompatActivity {
         if (lifestyle != null) {
             switch (lifestyle) {
                 case "Vegan":
-                    RadioButton vegan = (RadioButton) findViewById(R.id.radioVegan);
+                    RadioButton vegan = findViewById(R.id.radioVegan);
                     vegan.setChecked(true);
                     break;
                 case "Vegetarian":
-                    RadioButton vegetarian = (RadioButton) findViewById(R.id.radioVegetarian);
+                    RadioButton vegetarian = findViewById(R.id.radioVegetarian);
                     vegetarian.setChecked(true);
                     break;
                 case "Gluten Free":
-                    RadioButton glutenFree = (RadioButton) findViewById(R.id.radioGlutenFree);
+                    RadioButton glutenFree = findViewById(R.id.radioGlutenFree);
                     glutenFree.setChecked(true);
                     break;
-                case "Omnivore":
-                    RadioButton carnivore = (RadioButton) findViewById(R.id.radioCarnivore);
+                case "Carnivore":
+                    RadioButton carnivore = findViewById(R.id.radioCarnivore);
                     carnivore.setChecked(true);
                     break;
                 case "Pescatarian":
-                    RadioButton pescatarian = (RadioButton) findViewById(R.id.radioPescatarian);
+                    RadioButton pescatarian = findViewById(R.id.radioPescatarian);
                     pescatarian.setChecked(true);
                     break;
                 case "No Restrictions":
-                    RadioButton noRestrictions = (RadioButton) findViewById(R.id.radioNoRestrictions);
+                    RadioButton noRestrictions = findViewById(R.id.radioNoRestrictions);
                     noRestrictions.setChecked(true);
                     break;
             }
         } else {
-            RadioButton noRestrictions = (RadioButton) findViewById(R.id.radioNoRestrictions);
+            RadioButton noRestrictions = findViewById(R.id.radioNoRestrictions);
             noRestrictions.setChecked(true);
             lifestyle = "No Restrictions";
         }

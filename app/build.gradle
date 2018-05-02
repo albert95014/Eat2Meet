@@ -8,6 +8,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -28,6 +29,8 @@ android {
 //}
 
 dependencies {
+//    compile 'com.github.wangjiegulu:rfab:2.0.0'
+    compile 'com.getbase:floatingactionbutton:1.10.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.google.firebase:firebase-database:11.0.4'
     compile fileTree(dir: 'libs', include: ['*.jar'])

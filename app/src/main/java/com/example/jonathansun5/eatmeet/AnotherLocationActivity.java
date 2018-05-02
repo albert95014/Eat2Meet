@@ -20,7 +20,7 @@ public class AnotherLocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anotherlocation);
-        progressBar = (ProgressBar)findViewById(R.id.progressBar1);
+        progressBar = findViewById(R.id.progressBar1);
         progressBar.setProgress(status);
         mCountDownTimer = new AnotherLocationActivity.MyCountDownTimer(6000,2000);
         mCountDownTimer.start();

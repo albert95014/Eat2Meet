@@ -10,10 +10,12 @@ package com.example.jonathansun5.eatmeet;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.ImageView;
         import android.widget.TextView;
         import android.widget.Toolbar;
 
         import java.util.ArrayList;
+        import java.util.Arrays;
 
         import butterknife.ButterKnife;
         import butterknife.BindView;
@@ -49,24 +51,11 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.numFriendsText) TextView _numFriendsText;
     @BindView(R.id.toMap) Button _toMapButton;
 
-
-
-
-
-
     @BindView(R.id.action_a) FloatingActionButton _menuEditNameEmailPassword;
     @BindView(R.id.action_b) FloatingActionButton _menuEditUsernamePhoneNumber;
     @BindView(R.id.action_c) FloatingActionButton _menuEditAgePartySizeLifeStyle;
     @BindView(R.id.action_d) FloatingActionButton _menuEditAllergies;
     @BindView(R.id.action_e) FloatingActionButton _menuEditFriends;
-
-
-
-
-
-
-
-
 
     private String name;
     private String email;
@@ -79,6 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ArrayList<String> allergies;
     private String numFriends;
     private ArrayList<String> friends;
+    private Boolean editSourceLogin;
 
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -102,6 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
         allergies = (ArrayList<String>) extras.get("allergies");
         numFriends = (String) extras.get("numFriends");
         friends = (ArrayList<String>) extras.get("friends");
+        editSourceLogin = (Boolean) extras.get("editSourceLogin");
 
         String censor = "";
         for (int i = 0; i < password.length() - 3; i++) {
@@ -134,8 +125,8 @@ public class ProfileActivity extends AppCompatActivity {
             _allergiesText.setText(allergyFull);
         }
         String friendsTextGood = "Friends: ";
-        Log.e("number of friends: ", String.valueOf(friends.size()));
-        if (friends.size() == 0) {
+//        Log.e("number of friends: ", String.valueOf(friends.size()));
+        if (friends == null || friends.size() == 0) {
             Log.e("num friends", "0 friends");
             friendsTextGood += "None";
         } else if (friends.size() == 1) {
@@ -153,8 +144,23 @@ public class ProfileActivity extends AppCompatActivity {
         }
         _friendsText.setText(friendsTextGood);
 
-        _toMapButton.setOnClickListener(new View.OnClickListener() {
 
+
+        if (!editSourceLogin) {
+            setSupportActionBar(_mToolbar);
+            _mToolbar.setTitle("User Profile");
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setDisplayShowHomeEnabled(false);
+        } else {
+            setSupportActionBar(_mToolbar);
+            _mToolbar.setTitle("User Profile");
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setDisplayShowHomeEnabled(false);
+        }
+
+        _toMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Start the Firebase and next activity
@@ -178,40 +184,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        setSupportActionBar(_mToolbar);
-        _mToolbar.setTitle("User Profile");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, CircleActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("phonenumber", phoneNumber);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
-                intent.putExtra("numFriends", numFriends);
-                intent.putExtra("friends", friends);
-                mContext.startActivity(intent);
-            }
-        });
-
-
-
 
 
         _menuEditNameEmailPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                startIntent(mContext, SignupActivity.class);
+                startEditIntent(mContext, SignupActivity.class);
             }
         });
 
@@ -219,7 +198,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                startIntent(mContext, UserNameActivity.class);
+                startEditIntent(mContext, UserNameActivity.class);
             }
         });
 
@@ -227,7 +206,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                startIntent(mContext, PersonalActivity.class);
+                startEditIntent(mContext, PersonalActivity.class);
             }
         });
 
@@ -235,7 +214,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                startIntent(mContext, AllergyActivity.class);
+                startEditIntent(mContext, AllergyActivity.class);
             }
         });
 
@@ -243,7 +222,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context mContext = getBaseContext();
-                startIntent(mContext, CircleActivity.class);
+                startEditIntent(mContext, CircleActivity.class);
             }
         });
 
@@ -324,7 +303,7 @@ public class ProfileActivity extends AppCompatActivity {
 //        });
     }
 
-    public void startIntent(Context mContext, Class c) {
+    public void startEditIntent(Context mContext, Class c) {
         Intent intent = new Intent(mContext, c);
         intent.putExtra("username", username);
         intent.putExtra("phonenumber", phoneNumber);
@@ -337,6 +316,8 @@ public class ProfileActivity extends AppCompatActivity {
         intent.putExtra("allergies", allergies);
         intent.putExtra("numFriends", numFriends);
         intent.putExtra("friends", friends);
+        intent.putExtra("edit", true);
+        intent.putExtra("editSourceLogin", editSourceLogin);
         mContext.startActivity(intent);
     }
 }

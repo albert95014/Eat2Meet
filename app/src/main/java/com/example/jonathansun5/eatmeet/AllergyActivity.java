@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import butterknife.ButterKnife;
 public class AllergyActivity extends AppCompatActivity {
 
     @BindView(R.id.my_toolbar) android.support.v7.widget.Toolbar _mToolbar;
+    @BindView(R.id.my_toolbar2) android.support.v7.widget.Toolbar _mToolbar2;
     @BindView(R.id.allergyContinue) Button _allergyContinue;
 
 
@@ -35,6 +38,8 @@ public class AllergyActivity extends AppCompatActivity {
     private ArrayList<String> allergies;
     private String numFriends;
     private ArrayList<String> friends;
+    private Boolean edit = false;
+    private Boolean editSourceLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,8 @@ public class AllergyActivity extends AppCompatActivity {
         birthYear = (String) extras.get("birthyear");
         partySize = (String) extras.get("partysize");
         allergies = (ArrayList<String>) extras.get("allergies");
+        edit = (Boolean) extras.get("edit");
+        editSourceLogin = (Boolean) extras.get("editSourceLogin");
 
         Log.e("ALLERGIES ARE: ", Arrays.toString(new ArrayList[]{allergies}));
 
@@ -120,37 +127,82 @@ public class AllergyActivity extends AppCompatActivity {
                 intent.putExtra("allergies", allergies);
                 intent.putExtra("numFriends", numFriends);
                 intent.putExtra("friends", friends);
+                intent.putExtra("edit", false);
+                intent.putExtra("editSourceLogin", editSourceLogin);
                 mContext.startActivity(intent);
             }
         });
 
-        setSupportActionBar(_mToolbar);
-        _mToolbar.setTitle("Allergies");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context mContext = getBaseContext();
-                Intent intent = new Intent(mContext, PersonalActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("phonenumber", phoneNumber);
-                intent.putExtra("name", name);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                intent.putExtra("birthyear", birthYear);
-                intent.putExtra("lifestyle", lifestyle);
-                intent.putExtra("partysize", partySize);
-                intent.putExtra("allergies", allergies);
+        if (!edit) {
+            setSupportActionBar(_mToolbar2);
+            getSupportActionBar().hide();
+            setSupportActionBar(_mToolbar);
+            _mToolbar.setTitle("Allergies");
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            _mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context mContext = getBaseContext();
+                    Intent intent = new Intent(mContext, PersonalActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("phonenumber", phoneNumber);
+                    intent.putExtra("name", name);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
+                    intent.putExtra("birthyear", birthYear);
+                    intent.putExtra("lifestyle", lifestyle);
+                    intent.putExtra("partysize", partySize);
+                    intent.putExtra("allergies", allergies);
 
-                Log.e("Passing from Circle", "allergies is: " + Arrays.toString(new ArrayList[]{allergies}));
+                    Log.e("Passing from Circle", "allergies is: " + Arrays.toString(new ArrayList[]{allergies}));
 
-                intent.putExtra("numFriends", numFriends);
-                intent.putExtra("friends", friends);
-                mContext.startActivity(intent);
-            }
-        });
+                    intent.putExtra("numFriends", numFriends);
+                    intent.putExtra("friends", friends);
+                    intent.putExtra("edit", false);
+                    intent.putExtra("editSourceLogin", editSourceLogin);
+                    mContext.startActivity(intent);
+                }
+            });
+        } else {
+            Log.e("AllergyActivity EDITTT", "pls edit");
+            setSupportActionBar(_mToolbar);
+            getSupportActionBar().hide();
+            setSupportActionBar(_mToolbar2);
+            _mToolbar2.setTitle("Edit Allergies");
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#fafafa")));
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setDisplayShowHomeEnabled(false);
+
+            _allergyContinue.setVisibility(View.GONE);
+
+            ImageView btn = (ImageView) findViewById(R.id.item_save_edit);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context mContext = getBaseContext();
+                    Intent intent = new Intent(mContext, ProfileActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("phonenumber", phoneNumber);
+                    intent.putExtra("name", name);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
+                    intent.putExtra("birthyear", birthYear);
+                    intent.putExtra("lifestyle", lifestyle);
+                    intent.putExtra("partysize", partySize);
+                    intent.putExtra("allergies", allergies);
+
+                    Log.e("Passing from Circle", "allergies is: " + Arrays.toString(new ArrayList[]{allergies}));
+
+                    intent.putExtra("numFriends", numFriends);
+                    intent.putExtra("friends", friends);
+                    intent.putExtra("edit", false);
+                    intent.putExtra("editSourceLogin", true);
+                    mContext.startActivity(intent);
+                }
+            });
+        }
     }
 
     public void onCheckboxClicked(View view) {
@@ -223,7 +275,6 @@ public class AllergyActivity extends AppCompatActivity {
                     allergies.remove("Gluten");
                 }
                 break;
-
         }
     }
 }

@@ -177,6 +177,7 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("allergies", allergies);
         intent.putExtra("numFriends", numFriends);
         intent.putExtra("friends", friends);
+        intent.putExtra("editSourceLogin", true);
         mContext.startActivity(intent);
         finish();
     }

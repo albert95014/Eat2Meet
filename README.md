@@ -6,7 +6,7 @@ __Eat2Meet__ is an Android Application designed to help you find friends in citi
 
 ![](README-images/Eat2MeetLoginPage.png)
 
-Above is the __Eat2Meet__ login page. Notice that the user interface conforms to _Android UI application conventions_ so that users can enjoy _effective, streamlined experiences_.
+Above is the __Eat2Meet__ _login page_. Notice that the user interface conforms to _Android UI application conventions_ so that users can enjoy _effective, streamlined experiences_.
 
 ## Motivation
 
@@ -14,33 +14,33 @@ We have gone through quite a few iterations of our design, including a major con
 
 ![](README-images/Eat2MeetInitialDesign.png)
 
-Simple initial design of the __Eat2Meet__ matching page.
+Simple _initial design_ of the __Eat2Meet__ matching page.
 
 ![](README-images/Eat2MeetLowFiPrototype.png)
 
-Low-Fi prototype additions include a new map background and preferences menu.
+_Low-Fi prototype_ additions include a _new map background and preferences menu_.
 
 ![](README-images/Eat2MeetHiFiPrototype.png)
 
-Hi-Fi prototype still consists of map background with added current location settings and a more refined preferences menu.
+_Hi-Fi prototype_ still consists of map background with _added current location settings and a more refined preferences menu_.
 
 ![](README-images/PeopleMatesOriginalMapDesign.png)
 
-The original map design from __Peoplemates__.
+The _original map design_ from __PeopleMates__.
 
 ![](README-images/PeopleMatesOriginalToolbarDesign.png)
 
-The original toolbar design from __Peoplemates__.
+The _original toolbar design_ from __PeopleMates__.
 
 ## About __Eat2Meet__
 
-__Eat2Meet__ matches users based on their __dining preferences and social circles__ (determined by users at sign-in). In addition, this app allow users to find other Eat2Meeters nearby if location and timing are concerns. In the future, we plan on integrating the [_Google Maps API_](https://cloud.google.com/maps-platform/) in order to make finding locations easier. We also plan on adding features that allow the user to link their account to [_Facebook_](https://developers.facebook.com/) so that populating social-circles is more convenient.
+__Eat2Meet__ matches users based on their __dining preferences and social circles__ (determined by users at sign-in). In addition, this app allow users to _find other Eat2Meeters nearby_ if location and timing are concerns. In the future, we plan on integrating the [Google Maps API](https://cloud.google.com/maps-platform/) in order to make finding locations easier. We also plan on adding features that allow the user to link their account to [Facebook](https://developers.facebook.com/) so that populating social-circles is more convenient.
 
 ## Installation
 
 Be sure to first [_download_](https://developer.android.com/studio/index.html) and [_install_](https://developer.android.com/studio/install) [__Android Studio__](https://developer.android.com/studio/).
 
-Once you have done so, you can clone or download this repo and open it in __Android Studio__.
+Once you have done so, you can _clone or download this repo_ and open it in __Android Studio__.
 
 ### Building the App
 
@@ -54,7 +54,7 @@ After a short while, you should see a notification that the build finished
 
 ### Running the App
 
-If you have an Android device, you can connect your device to __Android Studio__ and run the app on your device. If not, you can run the app in an emulator.
+If you have an __Android device__, you can connect your device to __Android Studio__ and run the app on your device. If not, you can __run the app in an emulator__.
 
 To run the app, click __Run > Run App__
 

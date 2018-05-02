@@ -10,8 +10,7 @@ Above is the __Eat2Meet__ _login page_. Notice that the user interface conforms 
 
 Here is a demo video of the app:
 
-<!-- [![Demo Video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://youtu.be/Nu7UVhpADLI) -->
-
+[![Demo Video](http://img.youtube.com/vi/Nu7UVhpADLI/0.jpg)](https://youtu.be/Nu7UVhpADLI)
 
 ## Motivation
 

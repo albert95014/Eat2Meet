@@ -10,7 +10,7 @@ Above is the __Eat2Meet__ _login page_. Notice that the user interface conforms 
 
 Here is a demo video of the app:
 
-[![Demo Video](http://img.youtube.com/vi/Nu7UVhpADLI/0.jpg)](https://youtu.be/Nu7UVhpADLI)
+[![Demo Video](https://www.youtube.com/watch?v=YdAtkEbRkq8/0.jpg)](https://www.youtube.com/watch?v=YdAtkEbRkq8)
 
 ## Motivation
 
@@ -38,7 +38,7 @@ The _original toolbar design_ from __PeopleMates__.
 
 ## About __Eat2Meet__
 
-__Eat2Meet__ matches users based on their __dining preferences and social circles__ (determined by users at sign-in). In addition, this app allow users to _find other Eat2Meeters nearby_ if location and timing are concerns. In the future, we plan on integrating the [Google Maps API](https://cloud.google.com/maps-platform/) in order to make finding locations easier. We also plan on adding features that allow the user to link their account to [Facebook](https://developers.facebook.com/) so that populating social-circles is more convenient.
+__Eat2Meet__ matches users based on their __dining preferences and social circles__ (determined by users at sign-in). In addition, this app allow users to _find other Eat2Meeters nearby_ if location and timing are concerns. In the future, we plan on integrating the [Google Maps API](https://cloud.google.com/maps-platform/) in order to make finding locations easier. We also plan on adding features that allow the user to link their account to [Facebook](https://developers.facebook.com/) so that populating social-circles is more convenient. Real-time syncing for user profiles and chat rooms are powered by [Google Firebase Realtime Database](https://firebase.google.com/).
 
 ## Installation
 

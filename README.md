@@ -10,7 +10,7 @@ Above is the __Eat2Meet__ _login page_. Notice that the user interface conforms 
 
 Here is a demo video of the app:
 
-[![Demo Video](https://www.youtube.com/watch?v=YdAtkEbRkq8/0.jpg)](https://www.youtube.com/watch?v=YdAtkEbRkq8)
+[![Demo Video](https://img.youtube.com/vi/YdAtkEbRkq8/0.jpg)](https://youtu.be/YdAtkEbRkq8)
 
 ## Motivation
 
